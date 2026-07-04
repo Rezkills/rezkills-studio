@@ -102,6 +102,45 @@
             margin-bottom: 20px;
             flex-grow: 1;
         }
+        
+        /* Notification Section Styles */
+        .notif-box {
+            background-color: #0b0c10;
+            border: 1px dashed #45f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .notif-text {
+            font-size: 0.85rem;
+            color: #c5c6c7;
+            line-height: 1.4;
+        }
+        .notif-text strong {
+            color: #45f3ff;
+        }
+        .notif-btn {
+            background-color: transparent;
+            border: 1px solid #45f3ff;
+            color: #45f3ff;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            width: 100%;
+            text-align: center;
+        }
+        .notif-btn:hover {
+            background-color: #45f3ff;
+            color: #0b0c10;
+        }
+
         .launch-btn {
             display: inline-block;
             text-align: center;
@@ -143,6 +182,13 @@
                     <h3>Yappwire</h3>
                     <p>A secure, real-time messaging application featuring advanced cloud architecture. Built for lightning-fast and confidential communication.</p>
                     
+                    <div class="notif-box">
+                        <p class="notif-text">
+                            <strong>🔔 Stay Updated:</strong> Enabling notifications grants this site permission to send a direct alert to your browser or device the exact moment the servers go online.
+                        </p>
+                        <button class="notif-btn" id="notifyMeBtn" onclick="requestNotificationPermission()">Enable Launch Alerts</button>
+                    </div>
+
                     <a href="https://rezkills.github.io/Yappwire/" 
                        class="launch-btn" 
                        onclick="alert('🔒 SYSTEM OFFLINE:\n\nYappwire will officially launch on July 29th at 11:59 PM.\n\nThis application is officially developed, operated, and verified under Rezkills Studio credits.'); return false;">
@@ -156,6 +202,32 @@
     <footer>
         &copy; 2026 Rezkills Studio. All rights reserved. Private Developer Hub.
     </footer>
+
+    <script>
+        function requestNotificationPermission() {
+            if (!("Notification" in window)) {
+                alert("This browser does not support web notifications.");
+                return;
+            }
+
+            Notification.requestPermission().then(function (permission) {
+                if (permission === "granted") {
+                    const btn = document.getElementById("notifyMeBtn");
+                    btn.innerText = "Alerts Enabled ✓";
+                    btn.style.backgroundColor = "#45f3ff";
+                    btn.style.color = "#0b0c10";
+                    
+                    // Welcome confirmation notification
+                    new Notification("Rezkills Studio", {
+                        body: "🚀 Device Linked! You will receive a system ping right here when Yappwire officially launches.",
+                        icon: "https://via.placeholder.com/128"
+                    });
+                } else {
+                    alert("Permissions denied. If you change your mind, click the lock icon next to the URL bar to allow notifications manually!");
+                }
+            });
+        }
+    </script>
 
 </body>
 </html>
