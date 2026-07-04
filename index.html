@@ -152,40 +152,46 @@
             flex-grow: 1;
         }
         
-        /* Notification Section Styles */
-        .notif-box {
+        /* Studio Dynamic Control Boxes */
+        .studio-panel-box {
             background-color: #0b0c10;
-            border: 1px dashed #45f3ff;
+            border: 1px dashed #2f3b4c;
             padding: 15px;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: flex;
             flex-direction: column;
             gap: 10px;
-            align-items: flex-start;
         }
-        .notif-text {
+        .panel-text {
             font-size: 0.85rem;
             color: #c5c6c7;
             line-height: 1.4;
         }
-        .notif-text strong {
+        .panel-text strong {
             color: #45f3ff;
         }
-        .notif-btn {
+        
+        /* Interactive Action Buttons */
+        .action-btn-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .panel-btn {
             background-color: transparent;
             border: 1px solid #45f3ff;
             color: #45f3ff;
-            padding: 8px 16px;
-            border-radius: 4px;
+            padding: 10px;
+            border-radius: 5px;
             cursor: pointer;
             font-size: 0.85rem;
             font-weight: bold;
             transition: all 0.2s ease;
-            width: 100%;
             text-align: center;
         }
-        .notif-btn:hover {
+        .panel-btn:hover {
             background-color: #45f3ff;
             color: #0b0c10;
         }
@@ -258,6 +264,40 @@
             margin-bottom: 25px;
             white-space: pre-line;
         }
+        
+        /* FORM CONTROLS IN MODAL */
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+        .modal-form label {
+            font-size: 0.85rem;
+            color: #45f3ff;
+            font-weight: bold;
+        }
+        .modal-form input, .modal-form textarea {
+            background-color: #0b0c10;
+            border: 1px solid #2f3b4c;
+            border-radius: 6px;
+            color: #ffffff;
+            padding: 10px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+        .modal-form input:focus, .modal-form textarea:focus {
+            border-color: #45f3ff;
+            outline: none;
+        }
+        
+        .modal-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
         .modal-close-btn {
             background-color: #45f3ff;
             color: #0b0c10;
@@ -270,6 +310,15 @@
         }
         .modal-close-btn:hover {
             background-color: #33b8c2;
+        }
+        .modal-cancel-btn {
+            background-color: transparent;
+            border: 1px solid #ff4a4a;
+            color: #ff4a4a;
+        }
+        .modal-cancel-btn:hover {
+            background-color: #ff4a4a;
+            color: #000000;
         }
 
         footer {
@@ -312,14 +361,19 @@
                     <h3>Yappwire</h3>
                     <p>A secure, real-time messaging application featuring advanced cloud architecture. Built for lightning-fast and confidential communication.</p>
                     
-                    <div class="notif-box">
-                        <p class="notif-text">
-                            <strong>🔔 Stay Updated:</strong> Enabling notifications grants this site permission to send a direct alert to your browser or device the exact moment the servers go online.
-                        </p>
-                        <button class="notif-btn" id="notifyMeBtn" onclick="requestNotificationPermission()">Enable Launch Alerts</button>
+                    <div class="action-btn-row">
+                        <button class="panel-btn" onclick="openBugReportForm()">🪲 Report Bug</button>
+                        <button class="panel-btn" onclick="openFeedbackForm()">⭐ Give Preview</button>
                     </div>
 
-                    <button class="launch-btn" onclick="showStudioModal('🔒 REZKILLS SYSTEM STATUS', 'Yappwire will officially launch on July 29th at 11:59 PM.\n\nThis application is officially developed, operated, and verified under Rezkills Studio credits.')">
+                    <div class="studio-panel-box">
+                        <p class="panel-text">
+                            <strong>🔔 Stay Updated:</strong> Enabling notifications grants this site permission to send a direct alert to your browser or device the exact moment the servers go online.
+                        </p>
+                        <button class="panel-btn" id="notifyMeBtn" onclick="requestNotificationPermission()">Enable Launch Alerts</button>
+                    </div>
+
+                    <button class="launch-btn" onclick="showStatusModal()">
                        System Offline - July 29
                     </button>
                 </div>
@@ -327,13 +381,40 @@
         </div>
     </main>
 
-    <div class="modal-overlay" id="studioModal">
+    <div class="modal-overlay" id="statusModal">
         <div class="modal-box">
-            <div class="modal-title" id="modalTitle">🔒 REZKILLS SYSTEM STATUS</div>
-            <div class="modal-text" id="modalText">
-                Placeholder content
+            <div class="modal-title" id="statusModalTitle">🔒 REZKILLS SYSTEM STATUS</div>
+            <div class="modal-text" id="statusModalText">
+                Yappwire will officially launch on July 29th at 11:59 PM.
+
+                This application is officially developed, operated, and verified under Rezkills Studio credits.
             </div>
-            <button class="modal-close-btn" onclick="hideStudioModal()">Acknowledge</button>
+            <button class="modal-close-btn" onclick="closeModal('statusModal')">Acknowledge</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="formModal">
+        <div class="modal-box">
+            <div class="modal-title" id="formModalTitle">SUBMIT ENTRY</div>
+            <p class="panel-text" style="margin-bottom: 15px;" id="formModalDesc">Provide your email to receive an AI response confirmation.</p>
+            
+            <form id="studioSubmissionForm" action="https://formspree.io/f/mrewrwbp" method="POST" class="modal-form" onsubmit="handleFormSubmit(event)">
+                <input type="hidden" name="_subject" id="formSubject" value="Rezkills Hub Entry">
+                
+                <div>
+                    <label for="userEmail">Your Email Address</label>
+                    <input type="email" name="email" id="userEmail" required placeholder="name@example.com">
+                </div>
+                <div>
+                    <label for="userContent" id="formLabelText">Message</label>
+                    <textarea name="message" id="userContent" rows="4" required placeholder="Type here..."></textarea>
+                </div>
+                
+                <div class="modal-buttons">
+                    <button type="button" class="modal-close-btn modal-cancel-btn" onclick="closeModal('formModal')">Cancel</button>
+                    <button type="submit" class="modal-close-btn" id="submitFormBtn">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -352,45 +433,35 @@
                 overlay.style.opacity = '0';
                 setTimeout(() => {
                     overlay.style.visibility = 'hidden';
-                }, 800); // Wait for the fade out to finish completely
-            }, 2200); // Let the animation perform its full scale up effect
+                }, 800);
+            }, 2200);
         });
 
-        // Custom Modal UI Control Hook
-        function showStudioModal(title, text) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalText').innerText = text;
-            document.getElementById('studioModal').classList.add('active');
+        // Modal Helpers
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
         }
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function showStatusModal() {
+            document.getElementById('statusModalTitle').innerText = "🔒 REZKILLS SYSTEM STATUS";
+            document.getElementById('statusModalText').innerText = "Yappwire will officially launch on July 29th at 11:59 PM.\n\nThis application is officially developed, operated, and verified under Rezkills Studio credits.";
+            openModal('statusModal');
+        }
+
+        // Setup Forms Dynamically
+        function openBugReportForm() {
+            document.getElementById('formSubject').value = "🪲 REZKILLS BUG REPORT";
+            document.getElementById('formModalTitle').innerText = "🪲 REPORT SYSTEM BUG";
+            document.getElementById('formModalDesc').innerText = "Enter your email. Rezkills AI will instantly parse your report and email an acknowledgment tracking ticket.";
+            document.getElementById('formLabelText').innerText = "Describe the Bug / Error Details";
+            document.getElementById('userContent').placeholder = "Explain what happened or what broken link you ran into...";
+            openModal('formModal');
+        }
+
+        function openFeedbackForm() {
+            document.getElementById('formSubject').value = "⭐ REZKILLS APP PREVIEW FEEDBACK";
+            document.getElementById('formModalTitle').innerText = "⭐ SUBMIT
         
-        function hideStudioModal() {
-            document.getElementById('studioModal').classList.remove('active');
-        }
-
-        // Native System Push Engine
-        function requestNotificationPermission() {
-            if (!("Notification" in window)) {
-                showStudioModal("SYSTEM ERROR", "This mobile or desktop browser does not support web push notifications.");
-                return;
-            }
-
-            Notification.requestPermission().then(function (permission) {
-                const btn = document.getElementById("notifyMeBtn");
-                if (permission === "granted") {
-                    btn.innerText = "Alerts Enabled ✓";
-                    btn.style.backgroundColor = "#45f3ff";
-                    btn.style.color = "#0b0c10";
-                    
-                    new Notification("Rezkills Studio", {
-                        body: "🚀 Device Linked! You will receive a system ping right here when Yappwire officially launches.",
-                        icon: "https://via.placeholder.com/128"
-                    });
-                } else {
-                    showStudioModal("🔧 ACTION REQUIRED", "Permissions denied.\n\nTo receive launch alerts, tap the lock icon next to the website address bar and manually toggle Notifications to 'Allow'.");
-                }
-            });
-        }
-    </script>
-
-</body>
-</html>
