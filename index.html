@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Rezkills Studio | Official Hub</title>
     <meta name="description" content="Welcome to the official hub of Rezkills Studio, creating secure and innovative digital applications.">
     <meta name="author" content="Rezkills Studio">
@@ -18,12 +17,7 @@
     </script>
 
     <style>
-        /* Modern Dark Tech Theme */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #0b0c10;
@@ -33,349 +27,87 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
-
-        /* NETFLIX-STYLE INTRO ANIMATION SCREEN */
         #intro-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background-color: #000000;
             z-index: 10000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.8s ease-in-out, visibility 0.8s;
+            display: flex; justify-content: center; align-items: center;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s;
         }
         .intro-logo {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: #45f3ff;
-            letter-spacing: 4px;
-            text-transform: uppercase;
+            font-size: 3.5rem; font-weight: 900; color: #45f3ff;
+            letter-spacing: 4px; text-transform: uppercase;
             font-family: 'Arial Black', Gadget, sans-serif;
-            animation: netflixScale 2.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
+            animation: netflixScale 2s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards;
             text-shadow: 0 0 20px rgba(69, 243, 255, 0.6);
             opacity: 0;
         }
         @keyframes netflixScale {
-            0% {
-                transform: scale(0.6);
-                opacity: 0;
-                filter: blur(5px);
-            }
-            20% {
-                opacity: 1;
-                filter: blur(0px);
-            }
-            60% {
-                transform: scale(1);
-                opacity: 1;
-                filter: blur(0px);
-            }
-            100% {
-                transform: scale(3.5);
-                opacity: 0;
-                filter: blur(10px);
-            }
+            0% { transform: scale(0.6); opacity: 0; filter: blur(5px); }
+            20% { opacity: 1; filter: blur(0px); }
+            60% { transform: scale(1); opacity: 1; filter: blur(0px); }
+            100% { transform: scale(2.5); opacity: 0; filter: blur(10px); }
         }
-
         header {
-            text-align: center;
-            padding: 60px 20px;
+            text-align: center; padding: 60px 20px;
             background: linear-gradient(135deg, #1f2833 0%, #0b0c10 100%);
             border-bottom: 2px solid #45f3ff;
         }
-        header h1 {
-            font-size: 3rem;
-            color: #ffffff;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(69, 243, 255, 0.3);
-        }
-        header p {
-            margin-top: 10px;
-            font-size: 1.2rem;
-            color: #45f3ff;
-        }
-        main {
-            flex: 1;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            width: 100%;
-        }
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2rem;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        /* Projects Grid Showcase */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            justify-content: center;
-        }
-        .project-card {
-            background-color: #1f2833;
-            border: 1px solid #2f3b4c;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: #45f3ff;
-        }
-        .project-info {
-            padding: 25px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-        .project-info h3 {
-            font-size: 1.5rem;
-            color: #ffffff;
-            margin-bottom: 10px;
-        }
-        .project-info p {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: #c5c6c7;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-        
-        /* Studio Dynamic Control Boxes */
-        .studio-panel-box {
-            background-color: #0b0c10;
-            border: 1px dashed #2f3b4c;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .panel-text {
-            font-size: 0.85rem;
-            color: #c5c6c7;
-            line-height: 1.4;
-        }
-        .panel-text strong {
-            color: #45f3ff;
-        }
-        
-        /* Interactive Action Buttons */
-        .action-btn-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        .panel-btn {
-            background-color: transparent;
-            border: 1px solid #45f3ff;
-            color: #45f3ff;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            font-weight: bold;
-            transition: all 0.2s ease;
-            text-align: center;
-        }
-        .panel-btn:hover {
-            background-color: #45f3ff;
-            color: #0b0c10;
-        }
-
-        .launch-btn {
-            display: inline-block;
-            text-align: center;
-            background-color: #45f3ff;
-            color: #0b0c10;
-            padding: 12px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 6px;
-            transition: background-color 0.2s ease;
-            cursor: pointer;
-            border: none;
-            width: 100%;
-            font-size: 1rem;
-        }
-        .launch-btn:hover {
-            background-color: #33b8c2;
-        }
-
-        /* CUSTOM ALERT MODAL STYLES */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            z-index: 9999;
-            padding: 20px;
-        }
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        .modal-box {
-            background-color: #1f2833;
-            border: 2px solid #45f3ff;
-            border-radius: 12px;
-            max-width: 450px;
-            width: 100%;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(69, 243, 255, 0.2);
-            transform: scale(0.8);
-            transition: transform 0.3s ease;
-        }
-        .modal-overlay.active .modal-box {
-            transform: scale(1);
-        }
-        .modal-title {
-            color: #ffffff;
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-        .modal-text {
-            color: #c5c6c7;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
-            white-space: pre-line;
-        }
-        
-        /* FORM CONTROLS IN MODAL */
-        .modal-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            text-align: left;
-            margin-bottom: 20px;
-        }
-        .modal-form label {
-            font-size: 0.85rem;
-            color: #45f3ff;
-            font-weight: bold;
-        }
-        .modal-form input, .modal-form textarea {
-            background-color: #0b0c10;
-            border: 1px solid #2f3b4c;
-            border-radius: 6px;
-            color: #ffffff;
-            padding: 10px;
-            font-family: inherit;
-            font-size: 0.9rem;
-            width: 100%;
-        }
-        .modal-form input:focus, .modal-form textarea:focus {
-            border-color: #45f3ff;
-            outline: none;
-        }
-        
-        .modal-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-        .modal-close-btn {
-            background-color: #45f3ff;
-            color: #0b0c10;
-            border: none;
-            padding: 10px 25px;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
-        .modal-close-btn:hover {
-            background-color: #33b8c2;
-        }
-        .modal-cancel-btn {
-            background-color: transparent;
-            border: 1px solid #ff4a4a;
-            color: #ff4a4a;
-        }
-        .modal-cancel-btn:hover {
-            background-color: #ff4a4a;
-            color: #000000;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            background-color: #0b0c10;
-            border-top: 1px solid #1f2833;
-            font-size: 0.85rem;
-            color: #666;
-            margin-top: auto;
-        }
-        .legal-warning {
-            color: #ff4a4a;
-            font-size: 0.75rem;
-            margin-top: 10px;
-            line-height: 1.4;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+        header h1 { font-size: 3rem; color: #ffffff; letter-spacing: 2px; }
+        header p { margin-top: 10px; font-size: 1.2rem; color: #45f3ff; }
+        main { flex: 1; max-width: 1200px; margin: 0 auto; padding: 40px 20px; width: 100%; }
+        .section-title { text-align: center; margin-bottom: 40px; font-size: 2rem; color: #ffffff; text-transform: uppercase; }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .project-card { background-color: #1f2833; border: 1px solid #2f3b4c; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; }
+        .project-info { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+        .project-info h3 { font-size: 1.5rem; color: #ffffff; margin-bottom: 10px; }
+        .project-info p { font-size: 0.95rem; line-height: 1.5; color: #c5c6c7; margin-bottom: 20px; flex-grow: 1; }
+        .studio-panel-box { background-color: #0b0c10; border: 1px dashed #2f3b4c; padding: 15px; border-radius: 8px; margin-bottom: 15px; }
+        .panel-text { font-size: 0.85rem; color: #c5c6c7; line-height: 1.4; }
+        .panel-text strong { color: #45f3ff; }
+        .action-btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .panel-btn { background-color: transparent; border: 1px solid #45f3ff; color: #45f3ff; padding: 10px; border-radius: 5px; cursor: pointer; font-size: 0.85rem; font-weight: bold; text-align: center; }
+        .panel-btn:hover { background-color: #45f3ff; color: #0b0c10; }
+        .launch-btn { display: inline-block; text-align: center; background-color: #45f3ff; color: #0b0c10; padding: 12px 20px; font-weight: bold; border-radius: 6px; cursor: pointer; border: none; width: 100%; font-size: 1rem; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; z-index: 9999; padding: 20px; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal-box { background-color: #1f2833; border: 2px solid #45f3ff; border-radius: 12px; max-width: 450px; width: 100%; padding: 30px; text-align: center; transform: scale(0.8); transition: transform 0.3s ease; }
+        .modal-overlay.active .modal-box { transform: scale(1); }
+        .modal-title { color: #ffffff; font-size: 1.4rem; margin-bottom: 15px; }
+        .modal-text { color: #c5c6c7; font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px; white-space: pre-line; }
+        .modal-form { display: flex; flex-direction: column; gap: 15px; text-align: left; margin-bottom: 20px; }
+        .modal-form label { font-size: 0.85rem; color: #45f3ff; font-weight: bold; }
+        .modal-form input, .modal-form textarea { background-color: #0b0c10; border: 1px solid #2f3b4c; border-radius: 6px; color: #ffffff; padding: 10px; width: 100%; font-family: inherit; }
+        .modal-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .modal-close-btn { background-color: #45f3ff; color: #0b0c10; border: none; padding: 10px 25px; font-weight: bold; border-radius: 5px; cursor: pointer; }
+        .modal-cancel-btn { background-color: transparent; border: 1px solid #ff4a4a; color: #ff4a4a; }
+        footer { text-align: center; padding: 30px 20px; background-color: #0b0c10; border-top: 1px solid #1f2833; font-size: 0.85rem; color: #666; margin-top: auto; }
+        .legal-warning { color: #ff4a4a; font-size: 0.75rem; margin-top: 10px; }
     </style>
 </head>
 <body>
-
-    <div id="intro-overlay">
-        <div class="intro-logo">Yappwire</div>
-    </div>
-
+    <div id="intro-overlay"><div class="intro-logo">Yappwire</div></div>
     <header>
         <h1>REZKILLS STUDIO</h1>
         <p>Next-Generation Digital Experiences</p>
     </header>
-
-    <main>
+        <main>
         <h2 class="section-title">Our Applications</h2>
-        
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-info">
                     <h3>Yappwire</h3>
-                    <p>A secure, real-time messaging application featuring advanced cloud architecture. Built for lightning-fast and confidential communication.</p>
-                    
+                    <p>A secure, real-time messaging application featuring advanced cloud architecture.</p>
                     <div class="action-btn-row">
                         <button class="panel-btn" onclick="openBugReportForm()">🪲 Report Bug</button>
                         <button class="panel-btn" onclick="openFeedbackForm()">⭐ Give Preview</button>
                     </div>
-
                     <div class="studio-panel-box">
-                        <p class="panel-text">
-                            <strong>🔔 Stay Updated:</strong> Enabling notifications grants this site permission to send a direct alert to your browser or device the exact moment the servers go online.
-                        </p>
+                        <p class="panel-text"><strong>🔔 Stay Updated:</strong> Direct alerts live when online.</p>
                         <button class="panel-btn" id="notifyMeBtn" onclick="requestNotificationPermission()">Enable Launch Alerts</button>
                     </div>
-
-                    <button class="launch-btn" onclick="showStatusModal()">
-                       System Offline - July 29
-                    </button>
+                    <button class="launch-btn" onclick="showStatusModal()">System Offline - July 29</button>
                 </div>
             </div>
         </div>
@@ -383,12 +115,8 @@
 
     <div class="modal-overlay" id="statusModal">
         <div class="modal-box">
-            <div class="modal-title" id="statusModalTitle">🔒 REZKILLS SYSTEM STATUS</div>
-            <div class="modal-text" id="statusModalText">
-                Yappwire will officially launch on July 29th at 11:59 PM.
-
-                This application is officially developed, operated, and verified under Rezkills Studio credits.
-            </div>
+            <div class="modal-title" id="statusModalTitle">🔒 SYSTEM STATUS</div>
+            <div class="modal-text" id="statusModalText">Yappwire will launch July 29th at 11:59 PM.</div>
             <button class="modal-close-btn" onclick="closeModal('statusModal')">Acknowledge</button>
         </div>
     </div>
@@ -396,11 +124,9 @@
     <div class="modal-overlay" id="formModal">
         <div class="modal-box">
             <div class="modal-title" id="formModalTitle">SUBMIT ENTRY</div>
-            <p class="panel-text" style="margin-bottom: 15px;" id="formModalDesc">Provide your email to receive an AI response confirmation.</p>
-            
+            <p class="panel-text" style="margin-bottom: 15px;" id="formModalDesc">Provide email for AI tracking confirmation.</p>
             <form id="studioSubmissionForm" action="https://formspree.io/f/mrewrwbp" method="POST" class="modal-form" onsubmit="handleFormSubmit(event)">
                 <input type="hidden" name="_subject" id="formSubject" value="Rezkills Hub Entry">
-                
                 <div>
                     <label for="userEmail">Your Email Address</label>
                     <input type="email" name="email" id="userEmail" required placeholder="name@example.com">
@@ -409,7 +135,6 @@
                     <label for="userContent" id="formLabelText">Message</label>
                     <textarea name="message" id="userContent" rows="4" required placeholder="Type here..."></textarea>
                 </div>
-                
                 <div class="modal-buttons">
                     <button type="button" class="modal-close-btn modal-cancel-btn" onclick="closeModal('formModal')">Cancel</button>
                     <button type="submit" class="modal-close-btn" id="submitFormBtn">Submit</button>
@@ -419,82 +144,64 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Rezkills Studio. All rights reserved. Private Developer Hub.</p>
-        <p class="legal-warning">
-            ⚠️ <strong>LEGAL NOTICE:</strong> All original source code, layout styles, and assets on this hub are protected under active copyright. Any unauthorized copying, distribution, or plagiarism of these properties will be met with immediate legal enforcement through the courts and reported directly to Google for DMCA removal and domain penalties.
-        </p>
+        <p>&copy; 2026 Rezkills Studio. Private Developer Hub.</p>
     </footer>
 
     <script>
-        // Fixed Intro Exiting Logic - Ensures screen layer clears out immediately when loaded
-        window.addEventListener('load', () => {
+        // Unstoppable 2-second overlay removal failsafe
+        setTimeout(() => {
             const overlay = document.getElementById('intro-overlay');
             if (overlay) {
-                setTimeout(() => {
-                    overlay.style.opacity = '0';
-                    setTimeout(() => {
-                        overlay.style.visibility = 'hidden';
-                        overlay.style.display = 'none'; // Completely shuts down the blocking element layer
-                    }, 800);
-                }, 1000);
+                overlay.style.opacity = '0';
+                setTimeout(() => { overlay.style.display = 'none'; }, 500);
             }
-        });
+        }, 2000);
 
-        // Modal Helpers
-        function openModal(id) {
-            document.getElementById(id).classList.add('active');
-        }
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('active');
-        }
+        function openModal(id) { document.getElementById(id).classList.add('active'); }
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+        function showStatusModal() { openModal('statusModal'); }
 
-        function showStatusModal() {
-            document.getElementById('statusModalTitle').innerText = "🔒 REZKILLS SYSTEM STATUS";
-            document.getElementById('statusModalText').innerText = "Yappwire will officially launch on July 29th at 11:59 PM.\n\nThis application is officially developed, operated, and verified under Rezkills Studio credits.";
-            openModal('statusModal');
-        }
-
-        // Setup Forms Dynamically
         function openBugReportForm() {
             document.getElementById('formSubject').value = "🪲 REZKILLS BUG REPORT";
             document.getElementById('formModalTitle').innerText = "🪲 REPORT SYSTEM BUG";
-            document.getElementById('formModalDesc').innerText = "Enter your email. Rezkills AI will instantly parse your report and email an acknowledgment tracking ticket.";
-            document.getElementById('formLabelText').innerText = "Describe the Bug / Error Details";
-            document.getElementById('userContent').placeholder = "Explain what happened or what broken link you ran into...";
+            document.getElementById('formLabelText').innerText = "Describe Bug Details";
             openModal('formModal');
         }
-
         function openFeedbackForm() {
             document.getElementById('formSubject').value = "⭐ REZKILLS APP PREVIEW FEEDBACK";
             document.getElementById('formModalTitle').innerText = "⭐ SUBMIT APPLICATION PREVIEW";
-            document.getElementById('formModalDesc').innerText = "Enter your email. Rezkills AI will review your design thoughts and reply to your inbox shortly.";
-            document.getElementById('formLabelText').innerText = "Your Preview Thoughts / Feature Ideas";
-            document.getElementById('userContent').placeholder = "What features or styling ideas do you want to see in Yappwire?";
+            document.getElementById('formLabelText').innerText = "Feature Ideas";
             openModal('formModal');
         }
 
-        // Handles live submission tracking safely via AJAX fetch
         async function handleFormSubmit(e) {
             e.preventDefault();
             const form = document.getElementById('studioSubmissionForm');
             const submitBtn = document.getElementById('submitFormBtn');
-            const data = new FormData(form);
-            const email = document.getElementById('userEmail').value;
-
             submitBtn.innerText = "Sending...";
-            submitBtn.disabled = true;
             
             try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: data,
-                    headers: { 'Accept': 'application/json' }
-                });
-                
+                await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
                 closeModal('formModal');
-                
-                if (response.ok) {
-                    // Open stylized custom pop-up overlay
-                    document.getElementById('statusModalTitle').innerText = "🚀 DISPATCH SUCCESSFUL";
-                    document.getElementById('statusModalText').innerText = `Rezkills AI engine has parsed your data securely.\n\nA private receipt has been routed to the developer panel, and an automated response
-        
+                document.getElementById('statusModalTitle').innerText = "🚀 DISPATCH SUCCESSFUL";
+                document.getElementById('statusModalText').innerText = "Data sent successfully directly to the developer panel.";
+                openModal('statusModal');
+                form.reset();
+            } catch (err) {
+                alert("Network error. Try again.");
+            } finally {
+                submitBtn.innerText = "Submit";
+            }
+        }
+
+        function requestNotificationPermission() {
+            if ("Notification" in window) {
+                Notification.requestPermission().then(p => {
+                    if (p === "granted") new Notification("Rezkills Studio", { body: "🚀 Device Linked!" });
+                });
+            }
+        }
+    </script>
+</body>
+</html>
+
