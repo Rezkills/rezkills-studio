@@ -426,15 +426,18 @@
     </footer>
 
     <script>
-        // Netflix-style Intro Exiting Logic
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                const overlay = document.getElementById('intro-overlay');
-                overlay.style.opacity = '0';
+        // Fixed Intro Exiting Logic - Ensures screen layer clears out immediately when loaded
+        window.addEventListener('load', () => {
+            const overlay = document.getElementById('intro-overlay');
+            if (overlay) {
                 setTimeout(() => {
-                    overlay.style.visibility = 'hidden';
-                }, 800);
-            }, 2200);
+                    overlay.style.opacity = '0';
+                    setTimeout(() => {
+                        overlay.style.visibility = 'hidden';
+                        overlay.style.display = 'none'; // Completely shuts down the blocking element layer
+                    }, 800);
+                }, 1000);
+            }
         });
 
         // Modal Helpers
@@ -463,5 +466,35 @@
 
         function openFeedbackForm() {
             document.getElementById('formSubject').value = "⭐ REZKILLS APP PREVIEW FEEDBACK";
-            document.getElementById('formModalTitle').innerText = "⭐ SUBMIT
+            document.getElementById('formModalTitle').innerText = "⭐ SUBMIT APPLICATION PREVIEW";
+            document.getElementById('formModalDesc').innerText = "Enter your email. Rezkills AI will review your design thoughts and reply to your inbox shortly.";
+            document.getElementById('formLabelText').innerText = "Your Preview Thoughts / Feature Ideas";
+            document.getElementById('userContent').placeholder = "What features or styling ideas do you want to see in Yappwire?";
+            openModal('formModal');
+        }
+
+        // Handles live submission tracking safely via AJAX fetch
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = document.getElementById('studioSubmissionForm');
+            const submitBtn = document.getElementById('submitFormBtn');
+            const data = new FormData(form);
+            const email = document.getElementById('userEmail').value;
+
+            submitBtn.innerText = "Sending...";
+            submitBtn.disabled = true;
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                closeModal('formModal');
+                
+                if (response.ok) {
+                    // Open stylized custom pop-up overlay
+                    document.getElementById('statusModalTitle').innerText = "🚀 DISPATCH SUCCESSFUL";
+                    document.getElementById('statusModalText').innerText = `Rezkills AI engine has parsed your data securely.\n\nA private receipt has been routed to the developer panel, and an automated response
         
