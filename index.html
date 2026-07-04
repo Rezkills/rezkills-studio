@@ -152,17 +152,94 @@
             border-radius: 6px;
             transition: background-color 0.2s ease;
             cursor: pointer;
+            border: none;
+            width: 100%;
+            font-size: 1rem;
         }
         .launch-btn:hover {
             background-color: #33b8c2;
         }
+
+        /* CUSTOM ALERT MODAL STYLES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 9999;
+            padding: 20px;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-box {
+            background-color: #1f2833;
+            border: 2px solid #45f3ff;
+            border-radius: 12px;
+            max-width: 450px;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(69, 243, 255, 0.2);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+        .modal-title {
+            color: #ffffff;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .modal-text {
+            color: #c5c6c7;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            white-space: pre-line;
+        }
+        .modal-close-btn {
+            background-color: #45f3ff;
+            color: #0b0c10;
+            border: none;
+            padding: 10px 25px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .modal-close-btn:hover {
+            background-color: #33b8c2;
+        }
+
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
             background-color: #0b0c10;
             border-top: 1px solid #1f2833;
             font-size: 0.85rem;
             color: #666;
+            margin-top: auto;
+        }
+        .legal-warning {
+            color: #ff4a4a;
+            font-size: 0.75rem;
+            margin-top: 10px;
+            line-height: 1.4;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
@@ -189,45 +266,71 @@
                         <button class="notif-btn" id="notifyMeBtn" onclick="requestNotificationPermission()">Enable Launch Alerts</button>
                     </div>
 
-                    <a href="https://rezkills.github.io/Yappwire/" 
-                       class="launch-btn" 
-                       onclick="alert('🔒 SYSTEM OFFLINE:\n\nYappwire will officially launch on July 29th at 11:59 PM.\n\nThis application is officially developed, operated, and verified under Rezkills Studio credits.'); return false;">
+                    <button class="launch-btn" onclick="showStudioModal()">
                        System Offline - July 29
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
     </main>
 
+    <div class="modal-overlay" id="studioModal">
+        <div class="modal-box">
+            <div class="modal-title">🔒 REZKILLS SYSTEM STATUS</div>
+            <div class="modal-text" id="modalText">
+                Yappwire will officially launch on July 29th at 11:59 PM.
+
+                This application is officially developed, operated, and verified under Rezkills Studio credits.
+            </div>
+            <button class="modal-close-btn" onclick="hideStudioModal()">Acknowledge</button>
+        </div>
+    </div>
+
     <footer>
-        &copy; 2026 Rezkills Studio. All rights reserved. Private Developer Hub.
+        <p>&copy; 2026 Rezkills Studio. All rights reserved. Private Developer Hub.</p>
+        <p class="legal-warning">
+            ⚠️ <strong>LEGAL NOTICE:</strong> All original source code, layout styles, and assets on this hub are protected under active copyright. Any unauthorized copying, distribution, or plagiarism of these properties will be met with immediate legal enforcement through the courts and reported directly to Google for DMCA removal and domain penalties.
+        </p>
     </footer>
 
     <script>
+        function showStudioModal() {
+            document.getElementById('studioModal').classList.add('active');
+        }
+        function hideStudioModal() {
+            document.getElementById('studioModal').classList.remove('active');
+        }
+
         function requestNotificationPermission() {
             if (!("Notification" in window)) {
-                alert("This browser does not support web notifications.");
+                showCustomAlert("SYSTEM ERROR", "This mobile or desktop browser does not support web push notifications.");
                 return;
             }
 
             Notification.requestPermission().then(function (permission) {
+                const btn = document.getElementById("notifyMeBtn");
                 if (permission === "granted") {
-                    const btn = document.getElementById("notifyMeBtn");
                     btn.innerText = "Alerts Enabled ✓";
                     btn.style.backgroundColor = "#45f3ff";
                     btn.style.color = "#0b0c10";
                     
-                    // Welcome confirmation notification
                     new Notification("Rezkills Studio", {
                         body: "🚀 Device Linked! You will receive a system ping right here when Yappwire officially launches.",
                         icon: "https://via.placeholder.com/128"
                     });
                 } else {
-                    alert("Permissions denied. If you change your mind, click the lock icon next to the URL bar to allow notifications manually!");
+                    showCustomAlert("🔧 ACTION REQUIRED", "Permissions denied.\n\nTo receive launch alerts, tap the lock icon next to the website address bar and manually toggle Notifications to 'Allow'.");
                 }
             });
+        }
+
+        function showCustomAlert(title, text) {
+            document.querySelector('.modal-title').innerText = title;
+            document.getElementById('modalText').innerText = text;
+            showStudioModal();
         }
     </script>
 
 </body>
 </html>
+
