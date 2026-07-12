@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rezkills Studio</title>
     <style>
-        /* Modern Apple Dark Aesthetics */
+        /* Pure Apple Dark Minimalist Aesthetic */
         * {
             margin: 0;
             padding: 0;
@@ -17,228 +17,135 @@
             background-color: #000000;
             color: #ffffff;
             overflow-x: hidden;
-            padding-bottom: 60px;
         }
 
-        /* Top Navbar */
+        /* Fixed Premium Navbar */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .nav-container {
-            max-width: 1000px;
+            max-width: 1024px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 20px;
+            padding: 14px 22px;
         }
 
         .logo {
             font-weight: 600;
-            font-size: 18px;
+            font-size: 19px;
             letter-spacing: -0.5px;
         }
 
         .nav-links a {
-            color: #86868b;
+            color: #a1a1a6;
             text-decoration: none;
             font-size: 14px;
             margin-left: 24px;
-            transition: color 0.3s;
+            transition: color 0.2s;
         }
 
         .nav-links a:hover {
-            color: #ffffff;
+            color: #f5f5f7;
         }
 
-        /* Main Container Layout */
-        .main-layout {
-            max-width: 1100px;
-            margin: 100px auto 0 auto;
-            padding: 20px;
+        /* Hero Container Area */
+        .hero-container {
+            max-width: 1000px;
+            margin: 120px auto 40px auto;
+            text-align: center;
+            padding: 0 20px;
         }
 
-        /* Apple App Hub Grid */
-        .app-hub-title {
-            font-size: 40px;
+        .hero-title {
+            font-size: 46px;
             font-weight: 700;
-            letter-spacing: -1px;
-            margin-bottom: 8px;
-            background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
+            letter-spacing: -1.5px;
+            background: linear-gradient(180deg, #ffffff 30%, #a1a1a6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-
-        .app-hub-subtitle {
-            color: #86868b;
-            font-size: 17px;
-            margin-bottom: 40px;
-            max-width: 600px;
-            line-height: 1.5;
-        }
-
-        /* Grid of Apple-style Feature Cards */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-bottom: 60px;
-        }
-
-        .apple-card {
-            background: #1c1c1e;
-            border-radius: 22px;
-            padding: 30px;
-            cursor: pointer;
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background 0.3s;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 260px;
-            border: 1px solid rgba(255, 255, 255, 0.02);
-        }
-
-        .apple-card:hover {
-            transform: scale(1.02);
-            background: #252528;
-        }
-
-        .card-tag {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             margin-bottom: 12px;
         }
 
-        .card-title {
-            font-size: 24px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
-        }
-
-        .card-desc {
-            color: #a1a1a6;
-            font-size: 15px;
-            line-height: 1.4;
-        }
-
-        .card-action-hint {
-            color: #0071e3;
-            font-size: 14px;
-            font-weight: 500;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        /* FULL PAGE OVERLAY (The Standalone Page Feel) */
-        .page-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #000000;
-            z-index: 200;
-            display: none;
-            overflow-y: auto;
-            padding: 40px 20px;
-        }
-
-        .overlay-content {
-            max-width: 1200px;
+        .hero-subtitle {
+            color: #86868b;
+            font-size: 18px;
+            max-width: 600px;
             margin: 0 auto;
-            position: relative;
+            line-height: 1.5;
         }
 
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 14px;
-            cursor: pointer;
-            backdrop-filter: blur(10px);
-            transition: background 0.3s;
-        }
-
-        .close-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Apple Product Presentation Style */
-        .product-hero-section {
+        /* Big Stacked Apple Product Blocks */
+        .apple-product-section {
+            width: 100%;
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 80px 22px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            margin-top: 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .product-hero-tag {
+        .section-tag {
             font-size: 14px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
-        .product-hero-title {
+        .section-title {
             font-size: 48px;
             font-weight: 700;
             letter-spacing: -1.5px;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             line-height: 1.1;
         }
 
-        .product-hero-desc {
-            font-size: 18px;
+        .section-desc {
+            font-size: 19px;
             color: #86868b;
-            max-width: 700px;
-            line-height: 1.5;
-            margin-bottom: 40px;
+            max-width: 680px;
+            line-height: 1.45;
+            margin-bottom: 35px;
         }
 
-        .product-hero-img {
+        /* Huge Product Showcase Images */
+        .product-showcase-img {
             width: 100%;
-            max-width: 900px;
+            max-width: 840px;
             height: auto;
-            border-radius: 18px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            border-radius: 16px;
             object-fit: cover;
-            margin-bottom: 40px;
-            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Form Elements */
-        .section-box {
-            background: #1c1c1e;
-            border-radius: 24px;
+        /* Clean Vault Form Box */
+        .form-vault-card {
+            background: #111112;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
             padding: 40px;
-            max-width: 650px;
-            margin: 40px auto;
-            border: 1px solid rgba(255, 255, 255, 0.02);
+            width: 100%;
+            max-width: 580px;
+            margin-top: 20px;
         }
 
         .input-box {
             width: 100%;
-            background: #2c2c2e;
+            background: #222224;
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 16px;
             border-radius: 12px;
@@ -246,6 +153,7 @@
             font-size: 16px;
             margin-bottom: 16px;
             outline: none;
+            transition: border-color 0.2s;
         }
 
         .input-box:focus {
@@ -269,25 +177,26 @@
             background: #0077ed;
         }
 
-        /* Status Feedback Toast Display */
+        /* Interactive Status Toast */
         #status-toast {
             position: fixed;
             bottom: -100px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(28, 28, 30, 0.95);
+            background: rgba(30, 30, 32, 0.95);
             border: 1px solid rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(20px);
-            padding: 16px 32px;
+            -webkit-backdrop-filter: blur(20px);
+            padding: 16px 28px;
             border-radius: 30px;
             font-size: 14px;
             font-weight: 500;
             z-index: 1000;
-            transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-align: center;
-            width: 90%;
-            max-width: 400px;
+            width: 85%;
+            max-width: 380px;
         }
 
         #status-toast.visible {
@@ -296,11 +205,10 @@
 
         footer {
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 22px;
             color: #424245;
             font-size: 12px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 100px;
         }
     </style>
 </head>
@@ -310,97 +218,73 @@
         <div class="nav-container">
             <div class="logo">Rezkills Studio</div>
             <nav class="nav-links">
-                <a href="#hub">Application Hub</a>
-                <a href="#" onclick="openApplePage('telemetry')">Bug Submission</a>
+                <a href="#splash-section">Splash</a>
+                <a href="#stories-section">Stories</a>
+                <a href="#settings-section">Settings</a>
+                <a href="#telemetry-section">Bug Vault</a>
             </nav>
         </div>
     </header>
 
-    <div class="main-layout" id="hub">
-        <h2 class="app-hub-title">Yappwire Production Network</h2>
-        <p class="app-hub-subtitle">A high-performance custom localized social ecosystem layer built with state synchronization interfaces and granular configurations.</p>
-
-        <div class="features-grid">
-            
-            <div class="apple-card" onclick="openApplePage('splash')">
-                <div>
-                    <div class="card-tag" style="color: #ff3b30;">Core Interface</div>
-                    <h3 class="card-title">Splash Panel</h3>
-                    <p class="card-desc">Immersive cinematic application gateway animation sequence.</p>
-                </div>
-                <div class="card-action-hint">Explore Specification →</div>
-            </div>
-
-            <div class="apple-card" onclick="openApplePage('stories')">
-                <div>
-                    <div class="card-tag" style="color: #34c759;">Media Timeline</div>
-                    <h3 class="card-title">Stories Layout</h3>
-                    <p class="card-desc">Self-terminating ephemeral timelines running on 24-hour cycles.</p>
-                </div>
-                <div class="card-action-hint">Explore Specification →</div>
-            </div>
-
-            <div class="apple-card" onclick="openApplePage('settings')">
-                <div>
-                    <div class="card-tag" style="color: #0071e3;">Privacy Matrix</div>
-                    <h3 class="card-title">User Control Settings</h3>
-                    <p class="card-desc">Granular system preference controls and user visibility rule matrices.</p>
-                </div>
-                <div class="card-action-hint">Explore Specification →</div>
-            </div>
-
-            <div class="apple-card" onclick="openApplePage('contacts')">
-                <div>
-                    <div class="card-tag" style="color: #ffcc00;">Circle Index</div>
-                    <h3 class="card-title">Peer Sync System</h3>
-                    <p class="card-desc">Closed-loop phonebook sync array structures omitting tracking directories.</p>
-                </div>
-                <div class="card-action-hint">Explore Specification →</div>
-            </div>
-
-            <div class="apple-card" onclick="openApplePage('language')">
-                <div>
-                    <div class="card-tag" style="color: #af52de;">Global Engine</div>
-                    <h3 class="card-title">Localization Engine</h3>
-                    <p class="card-desc">Instant UI localization options supporting 8 distinct environment arrays.</p>
-                </div>
-                <div class="card-action-hint">Explore Specification →</div>
-            </div>
-
-            <div class="apple-card" onclick="openApplePage('chat')">
-                <div>
-                    <div class="card-tag" style="color: #5ac8fa;">Secure Comms</div>
-                    <h3 class="card-title">Sandbox Chats</h3>
-                    <p class="card-desc">Isolated secure sandbox array handling private string transfers.</p>
-                </div>
-                <div class="card-action-hint">Explore Specification →</div>
-            </div>
-
-        </div>
+    <div class="hero-container">
+        <h2 class="hero-title">Yappwire Production Network</h2>
+        <p class="hero-subtitle">Scroll down to see the official layout structures and technical environment configurations.</p>
     </div>
-        <div id="apple-sub-page" class="page-overlay">
-        <div class="overlay-content">
-            <button class="close-btn" onclick="closeApplePage()">✕ Close Spec</button>
-            
-            <div class="product-hero-section">
-                <div id="page-tag" class="product-hero-tag">TAG</div>
-                <h1 id="page-title" class="product-hero-title">TITLE</h1>
-                <p id="page-desc" class="product-hero-desc">DESCRIPTION</p>
-                <img id="page-img" class="product-hero-img" src="" alt="Product Specification View">
-            </div>
+        <section id="splash-section" class="apple-product-section">
+        <div class="section-tag" style="color: #ff3b30;">Core Interface</div>
+        <h1 class="section-title">Splash Panel</h1>
+        <p class="section-desc">An ultra-smooth, cinematic introduction window presented elegantly every single time the application environment boots up.</p>
+        <img class="product-showcase-img" src="yappwire-intro.png" alt="Yappwire Intro Splash View">
+    </section>
 
-            <div id="telemetry-form-container" style="display: none;">
-                <div class="section-box">
-                    <form id="bug-telemetry-form" onsubmit="transmitBugLogs(event)">
-                        <input type="email" id="email-field" class="input-box" placeholder="Your Email Address..." required>
-                        <textarea id="message-field" class="input-box" rows="5" placeholder="Describe the active console error code or glitch layout sequence..." style="resize:none;" required></textarea>
-                        <button type="submit" id="submit-btn" class="btn-action">Transmit Diagnostic Log</button>
-                    </form>
-                </div>
-            </div>
+    <section id="stories-section" class="apple-product-section">
+        <div class="section-tag" style="color: #34c759;">Media Timeline</div>
+        <h1 class="section-title">Share the moment.<br>Gone in 24 hours.</h1>
+        <p class="section-desc">Post media arrays seamlessly and let them clear naturally over short operational horizons without maintenance overhead.</p>
+        <img class="product-showcase-img" src="yappwire-stories.png" alt="Yappwire Stories View">
+    </section>
 
+    <section id="settings-section" class="apple-product-section">
+        <div class="section-tag" style="color: #0071e3;">Privacy Matrix</div>
+        <h1 class="section-title">Your name. Your rules.</h1>
+        <p class="section-desc">Configure bio matrices, manage profiles, and select visibility paths to govern data exposition exactly under your terms.</p>
+        <img class="product-showcase-img" src="yappwire-settings.png" alt="Yappwire Settings View">
+    </section>
+
+    <section id="contacts-section" class="apple-product-section">
+        <div class="section-tag" style="color: #ffcc00;">Circle Index</div>
+        <h1 class="section-title">Only the people you already know.</h1>
+        <p class="section-desc">Syncs gracefully alongside address books while avoiding public indexing protocols to protect user data environments.</p>
+        <img class="product-showcase-img" src="yappwire-contacts.png" alt="Yappwire Contacts View">
+    </section>
+
+    <section id="language-section" class="apple-product-section">
+        <div class="section-tag" style="color: #af52de;">Global Engine</div>
+        <h1 class="section-title">Eight languages.<br>One tap to switch.</h1>
+        <p class="section-desc">Ecosystem layouts adapt globally across multiple international dialects smoothly without generating framework reload delays.</p>
+        <img class="product-showcase-img" src="yappwire-language.png" alt="Yappwire Language Translation View">
+    </section>
+
+    <section id="chat-section" class="apple-product-section">
+        <div class="section-tag" style="color: #5ac8fa;">Secure Comms</div>
+        <h1 class="section-title">Just you two.<br>No one else reads in.</h1>
+        <p class="section-desc">Isolated string communication pipelines strictly bounded to verified conversational partners, ensuring total operational safety.</p>
+        <img class="product-showcase-img" src="yappwire-private-chat.png" alt="Yappwire Private Chat Sandbox View">
+    </section>
+
+    <section id="telemetry-section" class="apple-product-section">
+        <div class="section-tag" style="color: #00f0ff;">Diagnostics Matrix</div>
+        <h1 class="section-title">Telemetry Bug Vault</h1>
+        <p class="section-desc">Encountered structural script anomalies or delivery failures? Route an immediate data package right down into the developer core.</p>
+        
+        <div class="form-vault-card">
+            <form id="bug-telemetry-form" onsubmit="transmitBugLogs(event)">
+                <input type="email" name="email" id="email-field" class="input-box" placeholder="Your Email Address..." required>
+                <textarea name="message" id="message-field" class="input-box" rows="5" placeholder="Describe the active console error code or glitch layout sequence..." style="resize:none;" required></textarea>
+                <button type="submit" id="submit-btn" class="btn-action">Transmit Diagnostic Log</button>
+            </form>
         </div>
-    </div>
+    </section>
 
     <footer>
         <p>&copy; 2026 Rezkills Studio. Powered by Gemini Core Infrastructure Matrix.</p>
@@ -409,89 +293,6 @@
     <div id="status-toast">Payload sync initialized</div>
 
     <script>
-        // Exact filename map tracking your actual root repository assets (.png format)
-        const pageData = {
-            splash: {
-                tag: "Core Interface",
-                title: "Yappwire Splash Panel",
-                desc: "An ultra-smooth, cinematic introduction window presented elegantly every single time the application environment boots up.",
-                img: "yappwire-intro.png"
-            },
-            stories: {
-                tag: "Media Timeline",
-                title: "Share the moment. Gone in 24 hours.",
-                desc: "Post media arrays seamlessly and let them clear naturally over short operational horizons without maintenance overhead.",
-                img: "yappwire-stories.png" // Matched precisely to your repository asset
-            },
-            settings: {
-                tag: "Privacy Matrix",
-                title: "Your name. Your rules.",
-                desc: "Configure bio matrices, manage profiles, and select visibility paths to govern data exposition exactly under your terms.",
-                img: "yappwire-settings.png"
-            },
-            contacts: {
-                tag: "Circle Index",
-                title: "Only the people you already know.",
-                desc: "Syncs gracefully alongside address books while avoiding public indexing protocols to protect user data environments.",
-                img: "yappwire-contacts.png"
-            },
-            language: {
-                tag: "Global Engine",
-                title: "Eight languages. One tap to switch.",
-                desc: "Ecosystem layouts adapt globally across multiple international dialects smoothly without generating framework reload delays.",
-                img: "yappwire-language.png"
-            },
-            chat: {
-                tag: "Secure Comms",
-                title: "Just you two. No one else reads in.",
-                desc: "Isolated string communication pipelines strictly bounded to verified conversational partners, ensuring total operational safety.",
-                img: "yappwire-private-chat.png" // Matched precisely to your clean file (ignoring copy copy)
-            },
-            telemetry: {
-                tag: "Diagnostics Matrix",
-                title: "Telemetry Bug Vault",
-                desc: "Encountered structural script anomalies or delivery failures? Route an immediate data package right down into developers core.",
-                img: "yappwire-intro.png"
-            }
-        };
-
-        // Router handler acting like an isolated separate product page display
-        function openApplePage(key) {
-            const data = pageData[key];
-            if(!data) return;
-
-            document.getElementById('page-tag').innerText = data.tag;
-            document.getElementById('page-title').innerText = data.title;
-            document.getElementById('page-desc').innerText = data.desc;
-            document.getElementById('page-img').src = data.img;
-
-            // Apply different accent styling choices depending on context tags
-            if(key === 'splash') document.getElementById('page-tag').style.color = '#ff3b30';
-            if(key === 'stories') document.getElementById('page-tag').style.color = '#34c759';
-            if(key === 'settings') document.getElementById('page-tag').style.color = '#0071e3';
-            if(key === 'contacts') document.getElementById('page-tag').style.color = '#ffcc00';
-            if(key === 'language') document.getElementById('page-tag').style.color = '#af52de';
-            if(key === 'chat') document.getElementById('page-tag').style.color = '#5ac8fa';
-            if(key === 'telemetry') document.getElementById('page-tag').style.color = '#00f0ff';
-
-            // Show form block exclusively if telemetry bug path is selected
-            if(key === 'telemetry') {
-                document.getElementById('telemetry-form-container').style.display = 'block';
-            } else {
-                document.getElementById('telemetry-form-container').style.display = 'none';
-            }
-
-            const overlay = document.getElementById('apple-sub-page');
-            overlay.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // block parent scroll tracking
-            overlay.scrollTop = 0;
-        }
-
-        function closeApplePage() {
-            document.getElementById('apple-sub-page').style.display = 'none';
-            document.body.style.overflow = 'auto'; // release navigation scroll tracking
-        }
-
         // Toast status controller engine
         let toastTimer;
         function showStatusToast(message) {
@@ -504,37 +305,31 @@
             }, 4500);
         }
 
-        // Corrected Formspree Delivery Engine tracking against your specific token mrewrwbp
+        // Fixed Formspree transmission handling block using standard Formdata parsing
         async function transmitBugLogs(event) {
             event.preventDefault();
             
-            const emailValue = document.getElementById('email-field').value;
-            const messageValue = document.getElementById('message-field').value;
             const actionButton = document.getElementById('submit-btn');
-
             actionButton.disabled = true;
             actionButton.innerText = "Transmitting Payload...";
             showStatusToast("📡 Formspree payload packaging initialized...");
 
+            const formData = new FormData(document.getElementById('bug-telemetry-form'));
+
             try {
                 const response = await fetch("https://formspree.io/f/mrewrwbp", {
                     method: 'POST',
+                    body: formData,
                     headers: {
-                        'Content-Type': 'application/json',
                         'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        email: emailValue,
-                        message: messageValue
-                    })
+                    }
                 });
 
                 if (response.ok) {
                     showStatusToast("🚀 Transmission success! Log file delivered directly to Nissあ.");
                     document.getElementById('bug-telemetry-form').reset();
-                    setTimeout(() => closeApplePage(), 2000);
                 } else {
-                    showStatusToast("❌ Formspree error: Verify form activation directly on your dashboard.");
+                    showStatusToast("❌ Data rejected. Please check your Formspree account logs.");
                 }
             } catch (err) {
                 showStatusToast("❌ Connection Failure: Unable to broadcast telemetry assets.");
