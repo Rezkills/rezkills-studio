@@ -156,85 +156,124 @@
             margin-bottom: 24px;
         }
 
-        /* Functional Module Tab Toggles */
-        .app-switcher-tabs {
+        /* Apple-style Sub-navigation Tabs */
+        .apple-sub-nav {
             display: flex;
-            gap: 12px;
-            margin-bottom: 30px;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            padding-bottom: 14px;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 16px;
         }
 
-        .tab-btn {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .apple-sub-btn {
+            background: transparent;
+            border: none;
             color: #86868b;
-            padding: 12px 24px;
-            border-radius: 12px;
-            cursor: pointer;
+            font-size: 15px;
             font-weight: 500;
+            padding: 8px 16px;
+            cursor: pointer;
             transition: all 0.3s;
+            position: relative;
         }
 
-        .tab-btn.active, .tab-btn:hover {
-            background: #ffffff;
-            color: #000000;
-            border-color: #ffffff;
+        .apple-sub-btn:hover {
+            color: #ffffff;
         }
 
-        /* Screen Preview Dynamic Layout Grid */
-        .preview-viewer-pane {
+        .apple-sub-btn.active {
+            color: #00f0ff;
+            font-weight: 600;
+        }
+
+        .apple-sub-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -18px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #00f0ff;
+        }
+
+        /* Split Screen Hero Layout (Big Image + Info Side-by-Side) */
+        .showcase-display {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 24px;
+            gap: 40px;
+            align-items: center;
             margin-top: 20px;
+            width: 100%;
         }
 
-        @media(min-width: 768px) {
-            .preview-viewer-pane { grid-template-columns: 1fr 1fr; }
+        @media(min-width: 992px) {
+            .showcase-display {
+                grid-template-columns: 1.4fr 1fr;
+            }
         }
 
-        .preview-screenshot-wrapper {
-            background: rgba(255, 255, 255, 0.02);
+        /* Massive Hero Image Container */
+        .showcase-hero-image {
+            background: rgba(255, 255, 255, 0.01);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 18px;
+            border-radius: 20px;
             overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
             display: flex;
-            flex-direction: column;
-            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+            justify-content: center;
+            align-items: center;
+            width: 100%;
         }
 
-        .preview-screenshot-wrapper:hover {
-            transform: translateY(-4px);
-        }
-
-        .preview-screenshot-wrapper img {
+        .showcase-hero-image img {
             width: 100%;
             height: auto;
+            max-height: 65vh;
+            object-fit: contain;
             display: block;
-            object-fit: cover;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .img-caption {
-            padding: 16px;
+        /* Feature Info Sidebar Box */
+        .showcase-info-pane {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .feature-badge {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #7f00ff;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .feature-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .feature-desc {
+            font-size: 18px;
+            color: #86868b;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .feature-tech-note {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 3px solid #00f0ff;
+            padding: 14px;
+            border-radius: 0 12px 12px 0;
             font-size: 14px;
             color: #ffffff;
-            background: rgba(10, 10, 12, 0.8);
-            line-height: 1.4;
-        }
-
-        .img-caption span {
-            display: block;
-            color: #86868b;
-            font-size: 12px;
-            margin-top: 4px;}
-
-        .img-caption span {
-            display: block;
-            color: #86868b;
-            font-size: 12px;
-            margin-top: 4px;
         }
 
         /* Inputs & Button Action Triggers */
@@ -273,6 +312,32 @@
         .btn-secondary { background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
         .btn-secondary:hover { background: rgba(255,255,255,0.12); }
         .btn-discord { background: #5865F2; color: #fff; }
+
+        /* Main Section Module Tab Toggles */
+        .app-switcher-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding-bottom: 14px;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #86868b;
+            padding: 12px 24px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+        }
 
         /* Status Feedback Dialog Notification Container */
         #status-toast {
@@ -349,35 +414,101 @@
 
             <div id="app-panel-yappwire" class="app-content-panel">
                 <div class="apple-card">
-                    <div class="card-tag" style="color: #7f00ff;">Active Core Ecosystem Build</div>
-                    <div class="card-title">Yappwire Production Network</div>
-                    <p class="card-body">A high-performance custom localized social ecosystem layer built with state synchronization interfaces and granular end-to-end user configuration maps.</p>
                     
-                    <div class="preview-viewer-pane">
-                        <div class="preview-screenshot-wrapper">
-                            <img src="yappwire-intro.png" alt="Yappwire Splash Screen">
-                            <div class="img-caption">📦 Instance Splash Node: <span>Cinematic application entrance framework rendering layer.</span></div>
+                    <div class="apple-sub-nav">
+                        <button class="apple-sub-btn active" onclick="showFeature('splash', this)">Splash Panel</button>
+                        <button class="apple-sub-btn" onclick="showFeature('stories', this)">Stories Layout</button>
+                        <button class="apple-sub-btn" onclick="showFeature('settings', this)">Privacy Matrix</button>
+                        <button class="apple-sub-btn" onclick="showFeature('contacts', this)">Peer Match</button>
+                        <button class="apple-sub-btn" onclick="showFeature('language', this)">Localization</button>
+                        <button class="apple-sub-btn" onclick="showFeature('chat', this)">Sandbox Chats</button>
+                    </div>
+
+                    <div id="feature-display-area">
+                        
+                        <div id="feat-splash" class="showcase-display">
+                            <div class="showcase-hero-image">
+                                <img src="yappwire-intro.png" alt="Yappwire Splash Screen">
+                            </div>
+                            <div class="showcase-info-pane">
+                                <div class="feature-badge" style="color: #ff007f;">Core Interface</div>
+                                <h3 class="feature-title">First Impressions Matter.</h3>
+                                <p class="feature-desc">A gorgeous, clean cinematic gateway entrance framework rendering layer designed to launch users straight into the ecosystem.</p>
+                                <div class="feature-tech-note">
+                                    📦 <strong>Instance Splash Node:</strong> Optimization pipeline for application boot sequence assets.
+                                </div>
+                            </div>
                         </div>
-                        <div class="preview-screenshot-wrapper">
-                            <img src="yappwire-stories.jpeg" alt="Yappwire Stories Layout">
-                            <div class="img-caption">⏳ Dynamic Stories Engine: <span>Self-terminating ephemeral media timelines (24-hour expiration cycles).</span></div>
+
+                        <div id="feat-stories" class="showcase-display" style="display: none;">
+                            <div class="showcase-hero-image">
+                                <img src="yappwire-stories.png" alt="Yappwire Stories Layout">
+                            </div>
+                            <div class="showcase-info-pane">
+                                <div class="feature-badge" style="color: #7f00ff;">Media Timeline</div>
+                                <h3 class="feature-title">Share the moment. Gone in 24 hours.</h3>
+                                <p class="feature-desc">Post photos, gather interaction threads, and let content fade away naturally with no messy permanent feeds to manage.</p>
+                                <div class="feature-tech-note">
+                                    ⏳ <strong>Dynamic Stories Engine:</strong> Self-terminating ephemeral media timelines running on 24-hour expiration cycles.
+                                </div>
+                            </div>
                         </div>
-                        <div class="preview-screenshot-wrapper">
-                            <img src="yappwire-settings.png" alt="Yappwire Settings Dashboard">
-                            <div class="img-caption">🔒 Security Parameters UI: <span>Granular system preference controls and user visibility rule matrices.</span></div>
+                                                <div id="feat-settings" class="showcase-display" style="display: none;">
+                            <div class="showcase-hero-image">
+                                <img src="yappwire-settings.png" alt="Yappwire Settings Dashboard">
+                            </div>
+                            <div class="showcase-info-pane">
+                                <div class="feature-badge" style="color: #00f0ff;">User Control</div>
+                                <h3 class="feature-title">Your name. Your rules.</h3>
+                                <p class="feature-desc">Set profiles, custom biographical summaries, and control exactly what remains hidden or visible to the production layer matrix.</p>
+                                <div class="feature-tech-note">
+                                    🔒 <strong>Security Parameters UI:</strong> Granular system preference controls and user visibility rule matrices.
+                                </div>
+                            </div>
                         </div>
-                        <div class="preview-screenshot-wrapper">
-                            <img src="yappwire-contacts.png" alt="Yappwire Contact Matrix">
-                            <div class="img-caption">👥 Ring Integration Index: <span>Closed loop phonebook sync array structures.</span></div>
+
+                        <div id="feat-contacts" class="showcase-display" style="display: none;">
+                            <div class="showcase-hero-image">
+                                <img src="yappwire-contacts.png" alt="Yappwire Contact Matrix">
+                            </div>
+                            <div class="showcase-info-pane">
+                                <div class="feature-badge" style="color: #ffb300;">Circle Index</div>
+                                <h3 class="feature-title">Only the people you already know.</h3>
+                                <p class="feature-desc">Syncs cleanly with device address books. Zero public directories or algorithms tracking or exposing data layers to random strangers.</p>
+                                <div class="feature-tech-note">
+                                    👥 <strong>Ring Integration Index:</strong> Closed loop phonebook sync array structures.
+                                </div>
+                            </div>
                         </div>
-                        <div class="preview-screenshot-wrapper">
-                            <img src="yappwire-language.png" alt="Yappwire Translation View">
-                            <div class="img-caption">🌐 Language Switcher Module: <span>On-the-fly system translations supporting 8 distinct localized environments.</span></div>
+
+                        <div id="feat-language" class="showcase-display" style="display: none;">
+                            <div class="showcase-hero-image">
+                                <img src="yappwire-language.png" alt="Yappwire Translation View">
+                            </div>
+                            <div class="showcase-info-pane">
+                                <div class="feature-badge" style="color: #00e676;">Global Engine</div>
+                                <h3 class="feature-title">Eight languages. One tap to switch.</h3>
+                                <p class="feature-desc">Ecosystem translations supporting on-the-fly localizations. Toggle interface environments dynamically without needing a full system app restart.</p>
+                                <div class="feature-tech-note">
+                                    🌐 <strong>Language Switcher Module:</strong> Instant UI localization supporting 8 distinct environment arrays.
+                                </div>
+                            </div>
                         </div>
-                        <div class="preview-screenshot-wrapper">
-                            <img src="yappwire-privatechat.png" alt="Yappwire Sandbox Chats">
-                            <div class="img-caption">💬 Peer Conversation Panel: <span>Isolated custom text communication sandbox array.</span></div>
+
+                        <div id="feat-chat" class="showcase-display" style="display: none;">
+                            <div class="showcase-hero-image">
+                                <img src="yappwire-privatechat.png" alt="Yappwire Sandbox Chats">
+                            </div>
+                            <div class="showcase-info-pane">
+                                <div class="feature-badge" style="color: #e040fb;">Secure Comms</div>
+                                <h3 class="feature-title">Just you two. No one else reads in.</h3>
+                                <p class="feature-desc">Isolated text communication environments strictly locked to conversation participants, backed completely by database level privacy configurations.</p>
+                                <div class="feature-tech-note">
+                                    💬 <strong>Peer Conversation Panel:</strong> Dedicated secure sandbox array handling encrypted string transfers.
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -422,6 +553,8 @@
                 <p class="card-body">Locate errors or glitch sequences? Input your email address and description below to route a technical diagnostic trace directly to development core.</p>
                 
                 <form id="bug-telemetry-form" onsubmit="transmitBugLogs(event)">
+                    <input type="hidden" id="access-key-field" value="YOUR_ACCESS_KEY_HERE">
+                    
                     <input type="email" id="email-field" class="input-box" placeholder="Your Email Address..." required>
                     <textarea id="message-field" class="input-box" rows="4" placeholder="Describe the active console error code or bug..." style="resize:none; font-family:inherit;" required></textarea>
                     <button type="submit" id="submit-btn" class="btn-action btn-secondary">Transmit Log Data</button>
@@ -466,6 +599,19 @@
             document.getElementById('tab-' + targetId).classList.add('active');
         }
 
+        /* Apple-style Subnavigation Feature Filter Router */
+        function showFeature(featureId, element) {
+            document.querySelectorAll('.showcase-display').forEach(display => {
+                display.style.display = 'none';
+            });
+            document.querySelectorAll('.apple-sub-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById('feat-' + featureId).style.display = 'grid';
+            element.classList.add('active');
+        }
+
         /* Status Toast Alert Engine */
         let alertTimeout;
         function updateStatusToast(msgText) {
@@ -484,41 +630,44 @@
             updateStatusToast("⚡ Alpha Stage Framework initialized successfully. Styling matrix applied.");
         }
 
-        /* Async Telemetry Direct Vault Handling (Stops Redirects Entirely) */
+        /* Async Telemetry Direct Vault Handling (Web3Forms Implementation) */
         async function transmitBugLogs(event) {
             event.preventDefault();
             
+            const accessKey = document.getElementById('access-key-field').value;
             const emailInput = document.getElementById('email-field').value;
             const msgInput = document.getElementById('message-field').value;
             const actionBtn = document.getElementById('submit-btn');
 
             actionBtn.disabled = true;
             actionBtn.innerText = "Transmitting Payload...";
-            updateStatusToast("📡 Processing and packages local log array cells...");
+            updateStatusToast("📡 Processing and packaging local log array cells...");
 
             try {
-                const response = await fetch("https://formspree.io/f/mvggpkzo", {
+                const response = await fetch("https://api.web3forms.com/submit", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     },
                     body: JSON.stringify({
+                        access_key: accessKey,
                         email: emailInput,
-                        message: msgInput
+                        message: msgInput,
+                        subject: "New Bug Submission from Rezkills Studio"
                     })
                 });
 
-                if (response.ok) {
+                const result = await response.json();
+
+                if (result.success) {
                     updateStatusToast("🚀 Transmission success! Diagnostics trace delivered directly to Nissあ.");
                     document.getElementById('bug-telemetry-form').reset();
                 } else {
-                    updateStatusToast("✅ Log accepted and securely compiled into development core data fields.");
-                    document.getElementById('bug-telemetry-form').reset();
+                    updateStatusToast("❌ System Transmission failure. Please check your Access Key setup.");
                 }
             } catch (err) {
-                updateStatusToast("✅ Data received. Log sequence updated inside repository cache.");
-                document.getElementById('bug-telemetry-form').reset();
+                updateStatusToast("❌ Offline Exception: Could not broadcast log array data.");
             } finally {
                 actionBtn.disabled = false;
                 actionBtn.innerText = "Transmit Log Data";
@@ -526,4 +675,4 @@
         }
     </script>
 </body>
-    </html>
+</html>
