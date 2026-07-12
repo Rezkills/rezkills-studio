@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rezkills Studio</title>
     <style>
-        /* Pure Apple Dark Minimalist Aesthetic */
+        /* Pure Apple Dark Storefront Aesthetic */
         * {
             margin: 0;
             padding: 0;
@@ -17,9 +17,10 @@
             background-color: #000000;
             color: #ffffff;
             overflow-x: hidden;
+            padding-bottom: 80px;
         }
 
-        /* Fixed Premium Navbar */
+        /* Fixed Navigation Bar */
         header {
             position: fixed;
             top: 0;
@@ -46,161 +47,88 @@
             letter-spacing: -0.5px;
         }
 
-        .nav-links a {
-            color: #a1a1a6;
-            text-decoration: none;
-            font-size: 14px;
-            margin-left: 24px;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: #f5f5f7;
-        }
-
-        /* Hero Container Area */
-        .hero-container {
+        /* Storefront Header Area */
+        .store-hero {
             max-width: 1000px;
-            margin: 120px auto 40px auto;
+            margin: 140px auto 50px auto;
             text-align: center;
             padding: 0 20px;
         }
 
-        .hero-title {
-            font-size: 46px;
+        .store-title {
+            font-size: 48px;
             font-weight: 700;
             letter-spacing: -1.5px;
-            background: linear-gradient(180deg, #ffffff 30%, #a1a1a6 100%);
+            background: linear-gradient(180deg, #ffffff 40%, #a1a1a6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
-        .hero-subtitle {
+        .store-subtitle {
             color: #86868b;
-            font-size: 18px;
+            font-size: 19px;
             max-width: 600px;
             margin: 0 auto;
             line-height: 1.5;
         }
 
-        /* Big Stacked Apple Product Blocks */
-        .apple-product-section {
-            width: 100%;
+        /* Grid of Apple-Style Product Cards linking to individual pages */
+        .store-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
             max-width: 1024px;
             margin: 0 auto;
-            padding: 80px 22px;
+            padding: 0 22px;
+        }
+
+        .product-card {
+            background: #1c1c1e;
+            border-radius: 22px;
+            padding: 30px;
+            text-decoration: none;
+            color: #ffffff;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            justify-content: space-between;
+            min-height: 240px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.2s;
         }
 
-        .section-tag {
-            font-size: 14px;
+        .product-card:hover {
+            transform: scale(1.02);
+            background: #252528;
+        }
+
+        .card-tag {
+            font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
         }
 
-        .section-title {
-            font-size: 48px;
+        .card-title {
+            font-size: 26px;
             font-weight: 700;
-            letter-spacing: -1.5px;
-            margin-bottom: 16px;
-            line-height: 1.1;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+            line-height: 1.2;
         }
 
-        .section-desc {
-            font-size: 19px;
-            color: #86868b;
-            max-width: 680px;
-            line-height: 1.45;
-            margin-bottom: 35px;
+        .card-desc {
+            color: #a1a1a6;
+            font-size: 15px;
+            line-height: 1.4;
         }
 
-        /* Huge Product Showcase Images */
-        .product-showcase-img {
-            width: 100%;
-            max-width: 840px;
-            height: auto;
-            border-radius: 16px;
-            object-fit: cover;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Clean Vault Form Box */
-        .form-vault-card {
-            background: #111112;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 40px;
-            width: 100%;
-            max-width: 580px;
-            margin-top: 20px;
-        }
-
-        .input-box {
-            width: 100%;
-            background: #222224;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 16px;
-            border-radius: 12px;
-            color: #ffffff;
-            font-size: 16px;
-            margin-bottom: 16px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .input-box:focus {
-            border-color: #0071e3;
-        }
-
-        .btn-action {
-            width: 100%;
-            background: #0071e3;
-            color: #ffffff;
-            border: none;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .btn-action:hover {
-            background: #0077ed;
-        }
-
-        /* Interactive Status Toast */
-        #status-toast {
-            position: fixed;
-            bottom: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(30, 30, 32, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 16px 28px;
-            border-radius: 30px;
-            font-size: 14px;
+        .card-link {
+            color: #0071e3;
+            font-size: 15px;
             font-weight: 500;
-            z-index: 1000;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-align: center;
-            width: 85%;
-            max-width: 380px;
-        }
-
-        #status-toast.visible {
-            bottom: 30px;
+            margin-top: 20px;
         }
 
         footer {
@@ -209,6 +137,7 @@
             color: #424245;
             font-size: 12px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 120px;
         }
     </style>
 </head>
@@ -217,127 +146,76 @@
     <header>
         <div class="nav-container">
             <div class="logo">Rezkills Studio</div>
-            <nav class="nav-links">
-                <a href="#splash-section">Splash</a>
-                <a href="#stories-section">Stories</a>
-                <a href="#settings-section">Settings</a>
-                <a href="#telemetry-section">Bug Vault</a>
-            </nav>
         </div>
     </header>
 
-    <div class="hero-container">
-        <h2 class="hero-title">Yappwire Production Network</h2>
-        <p class="hero-subtitle">Scroll down to see the official layout structures and technical environment configurations.</p>
+    <div class="store-hero">
+        <h1 class="store-title">Yappwire Store</h1>
+        <p class="store-subtitle">Select a feature module below to view its official specifications and setup logs.</p>
     </div>
-        <section id="splash-section" class="apple-product-section">
-        <div class="section-tag" style="color: #ff3b30;">Core Interface</div>
-        <h1 class="section-title">Splash Panel</h1>
-        <p class="section-desc">An ultra-smooth, cinematic introduction window presented elegantly every single time the application environment boots up.</p>
-        <img class="product-showcase-img" src="yappwire-intro.png" alt="Yappwire Intro Splash View">
-    </section>
 
-    <section id="stories-section" class="apple-product-section">
-        <div class="section-tag" style="color: #34c759;">Media Timeline</div>
-        <h1 class="section-title">Share the moment.<br>Gone in 24 hours.</h1>
-        <p class="section-desc">Post media arrays seamlessly and let them clear naturally over short operational horizons without maintenance overhead.</p>
-        <img class="product-showcase-img" src="yappwire-stories.png" alt="Yappwire Stories View">
-    </section>
-
-    <section id="settings-section" class="apple-product-section">
-        <div class="section-tag" style="color: #0071e3;">Privacy Matrix</div>
-        <h1 class="section-title">Your name. Your rules.</h1>
-        <p class="section-desc">Configure bio matrices, manage profiles, and select visibility paths to govern data exposition exactly under your terms.</p>
-        <img class="product-showcase-img" src="yappwire-settings.png" alt="Yappwire Settings View">
-    </section>
-
-    <section id="contacts-section" class="apple-product-section">
-        <div class="section-tag" style="color: #ffcc00;">Circle Index</div>
-        <h1 class="section-title">Only the people you already know.</h1>
-        <p class="section-desc">Syncs gracefully alongside address books while avoiding public indexing protocols to protect user data environments.</p>
-        <img class="product-showcase-img" src="yappwire-contacts.png" alt="Yappwire Contacts View">
-    </section>
-
-    <section id="language-section" class="apple-product-section">
-        <div class="section-tag" style="color: #af52de;">Global Engine</div>
-        <h1 class="section-title">Eight languages.<br>One tap to switch.</h1>
-        <p class="section-desc">Ecosystem layouts adapt globally across multiple international dialects smoothly without generating framework reload delays.</p>
-        <img class="product-showcase-img" src="yappwire-language.png" alt="Yappwire Language Translation View">
-    </section>
-
-    <section id="chat-section" class="apple-product-section">
-        <div class="section-tag" style="color: #5ac8fa;">Secure Comms</div>
-        <h1 class="section-title">Just you two.<br>No one else reads in.</h1>
-        <p class="section-desc">Isolated string communication pipelines strictly bounded to verified conversational partners, ensuring total operational safety.</p>
-        <img class="product-showcase-img" src="yappwire-private-chat.png" alt="Yappwire Private Chat Sandbox View">
-    </section>
-
-    <section id="telemetry-section" class="apple-product-section">
-        <div class="section-tag" style="color: #00f0ff;">Diagnostics Matrix</div>
-        <h1 class="section-title">Telemetry Bug Vault</h1>
-        <p class="section-desc">Encountered structural script anomalies or delivery failures? Route an immediate data package right down into the developer core.</p>
+    <div class="store-grid">
         
-        <div class="form-vault-card">
-            <form id="bug-telemetry-form" onsubmit="transmitBugLogs(event)">
-                <input type="email" name="email" id="email-field" class="input-box" placeholder="Your Email Address..." required>
-                <textarea name="message" id="message-field" class="input-box" rows="5" placeholder="Describe the active console error code or glitch layout sequence..." style="resize:none;" required></textarea>
-                <button type="submit" id="submit-btn" class="btn-action">Transmit Diagnostic Log</button>
-            </form>
+        <a href="splash.html" class="product-card">
+            <div>
+                <div class="card-tag" style="color: #ff3b30;">Cinematic Entrance</div>
+                <h2 class="card-title">Splash Panel</h2>
+                <p class="card-desc">Immersive opening gateway graphics array configurations.</p>
+            </div>
+            <div class="card-link">Learn more & download →</div>
+        </a>
+
+        <a href="stories.html" class="product-card">
+            <div>
+                <div class="card-tag" style="color: #34c759;">Timeline Layer</div>
+                <h2 class="card-title">Stories Layout</h2>
+                <p class="card-desc">Self-terminating media systems refreshing on 24-hour cycles.</p>
+            </div>
+            <div class="card-link">Learn more & download →</div>
+        </a>
+
+        <a href="settings.html" class="product-card">
+            <div>
+                <div class="card-tag" style="color: #0071e3;">Privacy Controls</div>
+                <h2 class="card-title">User Settings</h2>
+                <p class="card-desc">Granular parameters protecting environment credentials.</p>
+            </div>
+            <div class="card-link">Learn more & download →</div>
+        </a>
+
+        <a href="contacts.html" class="product-card">
+            <div>
+                <div class="card-tag" style="color: #ffcc00;">Closed Sync</div>
+                <h2 class="card-title">Peer Sync System</h2>
+                <p class="card-desc">Zero tracking book matrices matching clean directory pairs.</p>
+            </div>
+            <div class="card-link">Learn more & download →</div>
+        </a>
+
+        <a href="language.html" class="product-card">
+            <div>
+                <div class="card-tag" style="color: #af52de;">Global Core</div>
+                <h2 class="card-title">Localization Engine</h2>
+                <p class="card-desc">Eight standalone dialect transformations switching smoothly.</p>
+            </div>
+            <div class="card-link">Learn more & download →</div>
+        </a>
+
+        <a href="chat.html" class="product-card">
+            <div>
+                <div class="card-tag" style="color: #5ac8fa;">Sandbox Tunnel</div>
+                <h2 class="card-title">Sandbox Chats</h2>
+                <p class="card-desc">Strictly isolated database conversation transfer pipelines.</p>
+            </div>
+            <div class="card-link">Learn more & download →</div>
+        </a>
+
+    </div>
         </div>
-    </section>
 
     <footer>
         <p>&copy; 2026 Rezkills Studio. Powered by Gemini Core Infrastructure Matrix.</p>
     </footer>
 
-    <div id="status-toast">Payload sync initialized</div>
-
-    <script>
-        // Toast status controller engine
-        let toastTimer;
-        function showStatusToast(message) {
-            const toast = document.getElementById('status-toast');
-            toast.innerText = message;
-            toast.classList.add('visible');
-            clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => {
-                toast.classList.remove('visible');
-            }, 4500);
-        }
-
-        // Fixed Formspree transmission handling block using standard Formdata parsing
-        async function transmitBugLogs(event) {
-            event.preventDefault();
-            
-            const actionButton = document.getElementById('submit-btn');
-            actionButton.disabled = true;
-            actionButton.innerText = "Transmitting Payload...";
-            showStatusToast("📡 Formspree payload packaging initialized...");
-
-            const formData = new FormData(document.getElementById('bug-telemetry-form'));
-
-            try {
-                const response = await fetch("https://formspree.io/f/mrewrwbp", {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    showStatusToast("🚀 Transmission success! Log file delivered directly to Nissあ.");
-                    document.getElementById('bug-telemetry-form').reset();
-                } else {
-                    showStatusToast("❌ Data rejected. Please check your Formspree account logs.");
-                }
-            } catch (err) {
-                showStatusToast("❌ Connection Failure: Unable to broadcast telemetry assets.");
-            } finally {
-                actionButton.disabled = false;
-                actionButton.innerText = "Transmit Diagnostic Log";
-            }
-        }
-    </script>
 </body>
 </html>
