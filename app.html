@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yappwire App - Official Presentation</title>
+    <style>
+        /* Official Apple App Storefront & Product Page Style */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #1d1d1f;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Apple Sticky Sub-Navigation Bar */
+        .apple-subnav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 52px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid #d2d2d7;
+            z-index: 999;
+        }
+
+        .subnav-content {
+            max-width: 1024px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            padding: 0 22px;
+        }
+
+        .subnav-left {
+            font-size: 21px;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: -0.5px;
+        }
+
+        .subnav-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .subnav-link {
+            font-size: 12px;
+            color: #515154;
+            text-decoration: none;
+        }
+
+        .apple-btn-download {
+            background-color: #0071e3;
+            color: #ffffff;
+            font-size: 12px;
+            padding: 4px 11px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 400;
+        }
+
+        /* App Introduction Hero Section */
+        .app-hero {
+            max-width: 1024px;
+            margin: 120px auto 40px auto;
+            padding: 0 22px;
+            text-align: left;
+        }
+
+        .app-category {
+            font-size: 14px;
+            font-weight: 600;
+            color: #6e6e73;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .app-title {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -1.5px;
+            line-height: 1.08;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+
+        .app-tagline {
+            font-size: 24px;
+            font-weight: 500;
+            color: #bf4800;
+        }
+
+        /* Large Mockup Centerpiece */
+        .hero-image-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .main-app-img {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 22px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            border: 1px solid #d2d2d7;
+        }
+
+        .apple-divider {
+            max-width: 980px;
+            margin: 40px auto;
+            height: 1px;
+            background-color: #d2d2d7;
+        }
+
+        /* Highlights Grid Section */
+        .highlights-section {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 40px 22px 80px 22px;
+        }
+
+        .section-heading {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 40px;
+        }
+
+        /* Horizontal/flex grid layout matching your screenshots */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .bento-card {
+            background-color: #f5f5f7;
+            border-radius: 28px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 440px;
+        }
+
+        .card-desc {
+            font-size: 17px;
+            line-height: 1.47;
+            font-weight: 500;
+            color: #1d1d1f;
+        }
+
+        .card-img-holder {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .square-app-screenshot {
+            width: 100%;
+            max-width: 240px;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* Paragraph spec documentation */
+        .app-editorial-text {
+            max-width: 740px;
+            font-size: 19px;
+            line-height: 1.42;
+            color: #6e6e73;
+            font-weight: 500;
+            margin-top: 50px;
+        }
+
+        .dark-text {
+            color: #1d1d1f;
+        }
+
+        /* Bug Vault Form Area */
+        .vault-section {
+            background: #f5f5f7;
+            border-radius: 30px;
+            padding: 40px;
+            max-width: 600px;
+            margin: 60px auto 0 auto;
+        }
+
+        .input-element {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #d2d2d7;
+            padding: 14px;
+            border-radius: 12px;
+            color: #1d1d1f;
+            font-size: 16px;
+            margin-bottom: 14px;
+            outline: none;
+        }
+
+        .submit-element {
+            width: 100%;
+            background: #0071e3;
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="apple-subnav">
+        <div class="subnav-content">
+            <div class="subnav-left">Yappwire</div>
+            <div class="subnav-right">
+                <a href="index.html" class="subnav-link">Overview</a>
+                <a href="#features" class="subnav-link">Features</a>
+                <a href="#bug-vault" class="apple-btn-download">Download App</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="app-hero">
+        <p class="app-category">Social Networking</p>
+        <h1 class="app-title">Just you two.<br>No one else reads in.</h1>
+        <p class="app-tagline">Isolated, private sandbox chats built for iOS and web.</p>
+        
+        <div class="hero-image-container">
+            <img class="main-app-img" src="yappwire-private-chat.png" alt="Main Interface Mobile Preview">
+        </div>
+    </header>
+
+    <div class="apple-divider"></div>
+
+    <section class="highlights-section" id="features">
+        <h2 class="section-heading">Get the highlights.</h2>
+
+        <div class="bento-grid">
+            <div class="bento-card">
+                <p class="card-desc">The splash panel features an immersive opening gateway animation sequence built directly into the app core.</p>
+                <div class="card-img-holder">
+                    <img class="square-app-screenshot" src="yappwire-intro.png" alt="Splash Interface">
+                </div>
+            </div>
+
+            <div class="bento-card">
+                <p class="card-desc">Share moments on self-terminating ephemeral timelines that automatically refresh on clean 24-hour lifespans.</p>
+                <div class="card-img-holder">
+                    <img class="square-app-screenshot" src="yappwire-stories.png" alt="Stories Feature">
+                </div>
+            </div>
+        </div>
+
+        <div class="bento-grid">
+            <div class="bento-card">
+                <p class="card-desc">Configure biometric security layers, modify localized options, and manage your private profile variables instantly.</p>
+                <div class="card-img-holder">
+                    <img class="square-app-screenshot" src="yappwire-settings.png" alt="Settings Screen">
+                </div>
+            </div>
+
+            <div class="bento-card">
+                <p class="card-desc">Synchronize with verified network endpoints through an encrypted peer index directory structure.</p>
+                <div class="card-img-holder">
+                    <img class="square-app-screenshot" src="yappwire-contacts.png" alt="Contacts Management">
+                </div>
+            </div>
+        </div>
+
+        <p class="app-editorial-text">
+            <span class="dark-text">Yappwire is remarkably fluid and fast.</span> It delivers instant language switching layouts across eight active dialects smoothly without causing viewport frame drops. Built with clean CSS and isolated routing profiles, it runs beautifully on your phone.
+        </p>
+
+        <div class="vault-section" id="bug-vault">
+            <h3 style="font-size: 22px; margin-bottom: 14px;">Telemetry Bug Vault</h3>
+            <p style="color: #6e6e73; font-size: 15px; margin-bottom: 20px;">Spotted a console error or script layout bug? Send the log report directly to the development environment core.</p>
+            <form action="https://formspree.io/f/mrewrwbp" method="POST">
+                <input type="email" name="email" class="input-element" placeholder="Your Email Address..." required>
+                <textarea name="message" class="input-element" rows="4" placeholder="Describe the app glitch sequence..." style="resize:none;" required></textarea>
+                <button type="submit" class="submit-element">Submit Diagnostic Log</button>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>
+
