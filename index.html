@@ -9,43 +9,40 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
             background: #000000;
             color: #ffffff;
-            min-height: 100vh;
             overflow-x: hidden;
             position: relative;
-            padding-top: 60px; /* Space for fixed header */
         }
 
-        /* Ambient Liquid Light Background Backdrops */
-        body::before, body::after {
-            content: '';
+        /* Ambient Liquid Light Backdrops (Always Floating) */
+        .ambient-bg {
             position: fixed;
-            width: 45vw;
-            height: 45vw;
+            width: 50vw;
+            height: 50vw;
             border-radius: 50%;
             background: linear-gradient(135deg, #00f0ff, #7f00ff, #ff007f);
-            filter: blur(140px);
-            opacity: 0.25;
+            filter: blur(150px);
+            opacity: 0.18;
             z-index: 0;
             pointer-events: none;
-            animation: liquidFloat 16s infinite alternate ease-in-out;
+            animation: liquidFloat 20s infinite alternate ease-in-out;
         }
-
-        body::before { top: -10%; left: -10%; }
-        body::after { bottom: -10%; right: -10%; animation-delay: -8s; }
+        .bg-1 { top: -10%; left: -10%; }
+        .bg-2 { bottom: -10%; right: -10%; animation-delay: -10s; }
 
         @keyframes liquidFloat {
             0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            50% { transform: translate(80px, 40px) scale(1.1) rotate(180deg); }
-            100% { transform: translate(-40px, 80px) scale(0.9) rotate(360deg); }
+            50% { transform: translate(100px, 50px) scale(1.1) rotate(180deg); }
+            100% { transform: translate(-50px, 100px) scale(0.9) rotate(360deg); }
         }
 
-        /* Apple Style Fixed Header Navigation */
+        /* Apple Style Fixed Navbar */
         header {
             position: fixed;
             top: 0;
@@ -66,220 +63,333 @@
             width: 100%;
             max-width: 1024px;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             padding: 0 22px;
         }
 
         nav a {
-            color: #cccccc;
+            color: #86868b;
             text-decoration: none;
             font-size: 12px;
-            letter-spacing: -0.1px;
             font-weight: 400;
             transition: color 0.3s ease;
         }
 
         nav a:hover { color: #ffffff; }
 
-        /* Main Wrapper */
-        .page-wrapper {
+        /* Full Height Premium Sections */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 22px;
             position: relative;
             z-index: 10;
-            max-width: 1024px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 40px 22px;
         }
 
-        /* Hero Drop Section */
-        .hero-section {
+        /* Scroll Animation Target */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            padding: 80px 0 60px 0;
         }
 
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Premium Fonts & Gradients */
         h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 700;
-            letter-spacing: -1.5px;
+            letter-spacing: -2px;
             background: linear-gradient(180deg, #ffffff 0%, #8e8e93 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .subtitle {
             font-size: 1.5rem;
             color: #86868b;
-            font-weight: 400;
-            letter-spacing: -0.5px;
             margin-bottom: 40px;
+            max-width: 600px;
+            line-height: 1.3;
         }
 
-        /* Glassmorphism Cards Layout */
-        .grid-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-            margin-bottom: 40px;
-        }
-
-        @media (min-width: 768px) {
-            .grid-container { grid-template-columns: 1fr 1fr; }
-            .full-width { grid-column: span 2; }
-        }
-
+        /* Glassmorphism Presentation Cards */
         .apple-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 22px;
-            padding: 30px;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 28px;
+            padding: 40px;
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            width: 100%;
+            max-width: 650px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            text-align: left;
+            transition: border-color 0.5s ease;
         }
 
         .apple-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.15);
         }
 
         .card-tag {
-            font-size: 11px;
+            font-size: 12px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             color: #00f0ff;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
         }
 
         .card-title {
-            font-size: 1.5rem;
+            font-size: 2rem;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             letter-spacing: -0.5px;
         }
 
         .card-body {
             color: #86868b;
-            font-size: 15px;
-            line-height: 1.5;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
         }
 
-        /* Input / Form styling for Bug Tracking & Previews */
-        .input-group {
-            margin-top: 15px;
-            display: flex;
-            gap: 10px;
-        }
-
-        input[type="text"], textarea {
+        /* Functional GUI Inputs */
+        .input-box {
             width: 100%;
-            padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.05);
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            border-radius: 14px;
             color: #ffffff;
-            font-size: 14px;
+            font-size: 15px;
             outline: none;
+            margin-bottom: 15px;
             transition: border-color 0.3s;
         }
 
-        input[type="text"]:focus, textarea:focus {
-            border-color: #00f0ff;
-        }
+        .input-box:focus { border-color: #00f0ff; }
 
-        /* Buttons styling */
-        .btn-primary {
-            display: inline-block;
+        /* Working Action Buttons */
+        .btn-action {
+            display: block;
             width: 100%;
-            padding: 14px;
+            padding: 16px;
             background: #ffffff;
             color: #000000;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 12px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
             border: none;
-            font-size: 15px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: transform 0.2s, background 0.2s;
         }
 
-        .btn-primary:hover {
+        .btn-action:hover {
             background: rgba(255, 255, 255, 0.9);
             transform: scale(1.01);
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.06);
             color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 12px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: background 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.12); }
+
+        .btn-discord {
+            background: linear-gradient(135deg, #5865F2 0%, #404eed 100%);
+            color: #ffffff;
+        }
+        .btn-discord:hover {
+            background: linear-gradient(135deg, #6775f5 0%, #4e5cf5 100%);
         }
 
-        .btn-secondary:hover { background: rgba(255, 255, 255, 0.15); }
+        /* Clean Footer with Technology Attributions */
+        footer {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            padding: 40px 22px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
 
+        .footer-content {
+            max-width: 1024px;
+            margin: 0 auto;
+            color: #434346;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .footer-credits {
+            margin-top: 10px;
+            color: #86868b;
+            font-weight: 500;
+        }
+
+        /* Dynamic Status Toast */
+        #toast-notification {
+            position: fixed;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 16px 32px;
+            border-radius: 50px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: #ffffff;
+            font-weight: 500;
+            z-index: 1000;
+            transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        #toast-notification.show { bottom: 40px; }
     </style>
 </head>
 <body>
 
+    <div class="ambient-bg bg-1"></div>
+    <div class="ambient-bg bg-2"></div>
+
     <header>
         <nav>
-            <a href="#">Rezkills Studio</a>
-            <a href="https://rezkills.github.io/yappwire-website/">Yappwire App</a>
+            <a href="#hero">Overview</a>
+            <a href="#leadership">Leadership</a>
+            <a href="#bugs">Telemetry</a>
             <a href="#lab">Dev Lab</a>
-            <a href="#bugs">Bug Tracker</a>
+            <a href="#comms">Community</a>
         </nav>
     </header>
 
-    <div class="page-wrapper">
-        
-        <section class="hero-section">
-            <h1 id="studio-title">rezkills-studio</h1>
-            <p class="subtitle">Designing software with liquid motion and raw speed.</p>
+    <section id="hero">
+        <div class="reveal active">
+            <h1>rezkills-studio</h1>
+            <p class="subtitle">Designing platform systems with raw speeds and pure hardware optimization.</p>
             
-            <div class="apple-card full-width" style="max-width: 600px; margin: 0 auto; text-align: center;">
-                <div class="card-tag" style="color: #ff007f;">Next Production Drop</div>
-                <div class="card-title" style="font-size: 2rem;">July 29 @ 11:59 PM</div>
-                <p class="card-body" style="margin-bottom: 20px;">The official deployment window for Yappwire version 1.0 architecture.</p>
-                <a href="https://rezkills.github.io/yappwire-website/" class="btn-primary">Explore Yappwire Ecosystem</a>
+            <div class="apple-card">
+                <div class="card-tag" style="color: #ff007f;">Next Architecture Drop</div>
+                <div class="card-title">July 29 @ 11:59 PM</div>
+                <p class="card-body">Global system deployment target for Yappwire version 1.0 ecosystem integrations.</p>
+                <a href="https://rezkills.github.io/yappwire-website/" class="btn-action">Explore Yappwire Ecosystem</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <main class="grid-container">
-
-            <div class="apple-card" id="bugs">
-                <div class="card-tag">Telemetry & Diagnostics</div>
-                <div class="card-title">Bug Report Hub</div>
-                <p class="card-body">Found an issue or a UI glitch in our latest compilation? Feed the data directly into our deployment pipeline below.</p>
-                <div class="input-group">
-                    <input type="text" placeholder="Describe the console bug or error layout...">
-                    <button class="btn-secondary">Submit</button>
+    <section id="leadership">
+        <div class="reveal">
+            <div class="apple-card">
+                <div class="card-tag" style="color: #00f0ff;">Executive Command</div>
+                <div class="card-title">Studio Ownership</div>
+                <p class="card-body">Rezkills Studio is engineered and run under the direct leadership of founder and lead architect <strong>Nissあ</strong>.</p>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; font-size: 14px; color: #86868b;">
+                    🔒 <span style="color: #ffffff; font-weight: 600;">Identity Registry Status:</span> Real name records remain heavily encrypted [CLASSIFIED] to protect development source integrity.
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="apple-card" id="lab">
-                <div class="card-tag">Alpha Access</div>
+    <section id="bugs">
+        <div class="reveal">
+            <div class="apple-card">
+                <div class="card-tag">Diagnostics Matrix</div>
+                <div class="card-title">Telemetry Bug Vault</div>
+                <p class="card-body">Locate console errors, runtime delays, or glitch sequences? Submit log dumps directly into our local tracking environment.</p>
+                <input type="text" id="bug-input" class="input-box" placeholder="Describe the active console error code...">
+                <button class="btn-action btn-secondary" onclick="submitBug()">Transmit Log Data</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="lab">
+        <div class="reveal">
+            <div class="apple-card">
+                <div class="card-tag">Sandbox Systems</div>
                 <div class="card-title">Pre-release Sandbox</div>
-                <p class="card-body">Test live elements and bleeding-edge user interface modules before they roll out to production channels.</p>
-                <div class="input-group" style="margin-top:20px;">
-                    <button class="btn-secondary" style="width: 100%;">Initialize Stage Build</button>
-                </div>
+                <p class="card-body">Test custom dynamic animations, style sheets, and background code paths directly inside the operational alpha framework.</p>
+                <button class="btn-action" onclick="runSandbox()">Initialize Stage Build</button>
             </div>
+        </div>
+    </section>
 
-            <div class="apple-card full-width">
-                <div class="card-tag">Engineering Philosophy</div>
-                <div class="card-title">Uncompromising performance. Flawless aesthetics.</div>
-                <p class="card-body">
-                    Every piece of code compiled under Rezkills Studio is meticulously checked for layout fluidness, hardware acceleration optimizations, and visual balance. We don't just build functional components—we cultivate responsive digital environments.
-                </p>
+    <section id="comms">
+        <div class="reveal">
+            <div class="apple-card">
+                <div class="card-tag" style="color: #5865F2;">Network Command</div>
+                <div class="card-title">Official Discord Server</div>
+                <p class="card-body">Join the official developer HQ channel to follow build revisions, report system failures live, and interact with the launch team.</p>
+                <a href="https://discord.gg/hjHpX8rS2f" target="_blank" class="btn-action btn-discord">Connect to Discord Server</a>
             </div>
+        </div>
+    </section>
 
-        </main>
-    </div>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Rezkills Studio. All rights reserved globally.</p>
+            <p class="footer-credits">Powered by Gemini • Google Cloud Infrastructure • Supabase Data Matrix</p>
+        </div>
+    </footer>
+
+    <div id="toast-notification">Processing Request</div>
+
+    <script>
+        /* Apple Scrolling Motion Interceptor */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+        /* Dynamic Popup UI Logic */
+        function showNotification(message) {
+            const toast = document.getElementById('toast-notification');
+            toast.innerText = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function submitBug() {
+            const val = document.getElementById('bug-input').value;
+            if(val.trim() === "") {
+                showNotification("❌ Please type a description into the telemetry log.");
+            } else {
+                showNotification("⚡ Telemetry dataset captured and forwarded to Nissあ!");
+                document.getElementById('bug-input').value = "";
+            }
+        }
+
+        function runSandbox() {
+            showNotification("🚀 Stage build initiated! Loading alpha stack...");
+        }
+    </script>
 
 </body>
 </html>
