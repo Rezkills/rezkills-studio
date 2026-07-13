@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rezkills Studio | Official Site</title>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Rezkills Studio",
+      "url": "https://rezkills.github.io/rezkills-studio/"
+    }
+    </script>
+
     <style>
         /* Global Reset & Premium Cinematic Framework */
         * {
@@ -158,7 +168,8 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-                /* ------------------------------------
+
+        /* ------------------------------------
            APP CATALOG INDEX SHOWCASE
         ------------------------------------ */
         .app-catalog-section {
@@ -202,8 +213,7 @@
             transform: translateY(-6px) scale(1.02);
             border-color: rgba(255, 255, 255, 0.15);
         }
-
-        .app-icon-wrapper {
+                .app-icon-wrapper {
             width: 72px;
             height: 72px;
             background: linear-gradient(135deg, #0071e3 0%, #003366 100%);
@@ -442,7 +452,7 @@
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 20px;
             max-width: 1024px;
-            margin: 0 auto 40px auto;
+            margin: 0 auto 20px auto;
             padding: 0 22px;
         }
 
@@ -478,6 +488,13 @@
             border-radius: 14px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .reporter-card-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -580,6 +597,21 @@
                 <div class="card-img-holder"><img class="square-app-screenshot" src="yappwire-network.png" alt="Network Framework"></div>
             </div>
         </div>
+
+        <div class="bento-grid" style="margin-bottom: 80px;">
+            <div class="bento-card" style="min-height: 260px;">
+                <div>
+                    <h3 class="reporter-card-title">Bug Reporter</h3>
+                    <p class="card-desc-dark" style="color: #86868b;">Report system anomalies, glitches, or UI inconsistencies instantly to our developer pipeline.</p>
+                </div>
+            </div>
+            <div class="bento-card" style="min-height: 260px;">
+                <div>
+                    <h3 class="reporter-card-title">Preview Reporter</h3>
+                    <p class="card-desc-dark" style="color: #86868b;">Submit feedback on early beta builds and preview features before the official release.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -603,4 +635,3 @@
     </script>
 </body>
 </html>
-
